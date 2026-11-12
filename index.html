@@ -1818,8 +1818,8 @@ function renderHub(){
     B.querySelectorAll("[data-palon]").forEach(b=>b.onclick=()=>{S.pal.on=!S.pal.on;save();renderHub()});
   }
   if(hubTab==="forge"){
-    const avail=MONS.filter(m=>unlocked(m.star)).sort(MSORT);
-    if(!avail.find(m=>m.k===forgeM))forgeM=avail[0].k;
+    const avail=MONS.filter(m=>unlocked(m.star)||(S.cleared&&S.cleared[m.k])).sort(MSORT);
+    if(!avail.find(m=>m.k===forgeM))forgeM=avail.length?avail[0].k:null;
     if(!WEAP[forgeW])forgeW=S.weapon;
     const costHtml=c=>Object.entries(c).map(([n,q])=>{const have=S.mats[n]||0;return have>=q?`${n} ${have}/${q}`:`<span class="lack">${n} ${have}/${q}</span>`}).join(", ");
     const can=c=>Object.entries(c).every(([n,q])=>(S.mats[n]||0)>=q);
@@ -1860,6 +1860,7 @@ function renderHub(){
         return `<div class="frow"><div class="fl"><img class="fimg" src="${PORT[m?k:"dummy"]}" alt=""><div><b>${info.name}</b><small>${isW?`공격 ${info.atk}${info.el?`, ${info.el} 속성`:""}`:`체력 ${info.hp}, 방어 ${info.def}`}</small>${own?"":`<small class="need">${costHtml(c)}</small>`}</div></div>${own?(eq?`<button disabled>장착 중</button>`:`<button data-peq="${kind}:${k}">장착</button>`):`<button data-pmk="${kind}:${k}" ${can(c)?"":"disabled"}>제작</button>`}</div>`};
       h+=`<h2>냥꾼 무기</h2><div class="forge" style="margin-top:0">${prow("w","starter")}${avail.map(m=>prow("w",m.k)).join("")}</div>`;
       h+=`<h2>냥꾼 방어구</h2><div class="forge" style="margin-top:0">${prow("a","starter")}${avail.map(m=>prow("a",m.k)).join("")}</div>`;
+    }else if(!forgeM){h+=`<p class="hint" style="margin-top:14px">아직 만들 수 있는 방어구가 없어요. 몬스터를 사냥하면 그 몬스터의 방어구가 여기에 나타나요.</p>`;
     }else{
       const m=MON[forgeM];
       h+=`<h2>몬스터</h2><div class="mchips">${avail.map((x,i)=>`${i===0||avail[i-1].star!==x.star?`<span class="mat" style="flex:none;align-self:center;background:transparent;border:0;color:#ffd76a;font-weight:700">${"★".repeat(x.star)}</span>`:""}<button data-f="${x.k}" class="${x.k===forgeM?"on":""}"><img src="${PORT[x.k]}" alt="">${x.name}${x.giant?" ⛰":""}</button>`).join("")}</div>

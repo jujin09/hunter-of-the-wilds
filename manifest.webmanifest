@@ -1,0 +1,18 @@
+{
+  "name": "Hunter of the Wilds",
+  "short_name": "HotW",
+  "description": "몬스터를 사냥하고 소재로 장비를 만드는 헌팅 액션",
+  "lang": "ko",
+  "start_url": "./",
+  "scope": "./",
+  "display": "fullscreen",
+  "display_override": ["fullscreen", "standalone"],
+  "orientation": "any",
+  "background_color": "#140609",
+  "theme_color": "#140609",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

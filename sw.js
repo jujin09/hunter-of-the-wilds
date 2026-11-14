@@ -1,5 +1,5 @@
 // Hunter of the Wilds service worker
-const VERSION="hotw-v23";
+const VERSION="hotw-v24";
 const CORE=["./","./index.html"];
 self.addEventListener("install",e=>{self.skipWaiting();e.waitUntil(caches.open(VERSION).then(c=>c.addAll(CORE)).catch(()=>{}))});
 self.addEventListener("activate",e=>{e.waitUntil(caches.keys().then(ks=>Promise.all(ks.filter(k=>k!==VERSION).map(k=>caches.delete(k)))).then(()=>self.clients.claim()))});

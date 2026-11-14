@@ -71,6 +71,7 @@ button:focus-visible{outline:3px solid var(--bronze);outline-offset:2px}
 .quest .medal{width:72px;height:72px;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle at 50% 40%,color-mix(in srgb,var(--ec,#8a8f86) 30%,var(--panel2)),var(--panel2) 70%);border:2px solid color-mix(in srgb,var(--ec,#8a8f86) 70%,transparent)}
 .quest img{width:64px;height:64px}
 .quest .qi{min-width:0}
+.hj{font-size:.82em;color:var(--muted);font-weight:400;letter-spacing:.04em}
 .quest .qt{display:block;color:var(--muted);font-size:12.5px}
 .quest .qn{display:block;font-family:"Black Han Sans","IBM Plex Sans KR",sans-serif;font-weight:400;font-size:21px;line-height:1.15;margin:1px 0 4px}
 .quest .chips{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:4px}
@@ -710,18 +711,18 @@ const MONS=[
  {k:"thunderape",name:"라이가르",kind:"뇌원수(雷猿獸) · 아수종",shape:"ape",star:5,r:50,spd:125,el:"번개",weak:"물",em:["lightning","bigpounce","quake"],moves:["swipe","bigpounce","lightning","quake","roar","charge"],c:["#4a3f2a","#2a2318","#ffe14d"],mats:["뇌격 털가죽","뇌격 손톱","뇌격 보옥"],sk:["도전자","집중"],desc:"분노하면 낙뢰가 쏟아집니다."},
  {k:"iceserpent",name:"글라시엘",kind:"빙해룡(氷海龍) · 해룡종",shape:"serpent",star:6,r:44,spd:135,el:"얼음",weak:"불",em:["beam","breath","meteor"],moves:["swipe","tailspin","beam","breath","meteor","charge","roar"],c:["#7fb8d6","#2e5d78","#e9fbff"],mats:["빙해 비늘","빙해 뿔","빙해 보옥"],sk:["회복량 UP","혼신"],desc:"광선, 브레스, 빙괴 낙하를 섞어 씁니다."},
  {k:"elder",name:"엔드라시스",kind:"종언룡(終焉龍) · 고룡종",shape:"wyvern",star:6,r:56,spd:110,el:"용",weak:"용",em:["fireball3","breath","meteor"],moves:["swipe","tailspin","fireball3","breath","meteor","charge","roar","quake"],c:["#2b1430","#12081a","#ff3b6b"],mats:["종언룡 비늘","종언룡 뿔","종언 보옥"],sk:["약점 특효","혼신"],desc:"모든 것을 끝내는 고룡. ★6의 마지막 벽입니다."},
- {k:"bird",name:"펙코루",kind:"탁조룡(啄鳥龍) · 조룡종",shape:"bird",star:1,r:38,spd:120,el:null,weak:"물",em:[],moves:["peck","peck","swipe","charge"],c:["#c98a4b","#8a5a2e","#7fd1ff"],mats:["조룡 깃털","부리 조각","부리 보옥"],sk:["회피 성능","스태미나 급속 회복"],desc:"부리로 빠르게 세 번 쪼아 댑니다."},
+ {k:"bird",name:"펙코루",kind:"탁조룡(啄鳥龍) · 조룡종",shape:"bird",star:1,r:38,spd:120,el:null,weak:"물",em:[],moves:["peck","peck","swipe","charge","leap","tailspin"],c:["#c98a4b","#8a5a2e","#7fd1ff"],mats:["조룡 깃털","부리 조각","부리 보옥"],sk:["회피 성능","스태미나 급속 회복"],desc:"부리로 빠르게 세 번 쪼아 댑니다."},
  {k:"spider",name:"네토라",kind:"망갑충(網甲蟲) · 갑충종",shape:"spider",star:1,r:40,spd:110,el:null,weak:"불",em:[],moves:["web","swipe","pounce","web"],c:["#6b5d4f","#3f362d","#f2e6c9"],mats:["거미 껍질","거미줄 덩이","거미 보옥"],sk:["가드 성능","상태이상 내성"],desc:"거미줄에 걸리거나 밟으면 움직임이 둔해집니다."},
- {k:"gale",name:"시르페스",kind:"풍조룡(風鳥龍) · 조룡종",shape:"bird",star:2,r:42,spd:140,el:null,weak:"얼음",em:[],moves:["peck","tornado","tornado","charge","swipe"],c:["#4f8f7a","#2c5547","#e8f7f0"],mats:["질풍 깃털","질풍 볏","질풍 보옥"],sk:["회피 거리","체술"],desc:"회오리를 날려 보냅니다. 회오리는 천천히 쫓아와요."},
+ {k:"gale",name:"시르페스",kind:"풍조룡(風鳥龍) · 조룡종",shape:"bird",star:2,r:42,spd:140,el:null,weak:"얼음",em:[],moves:["peck","tornado","tornado","charge","swipe","tailspin"],c:["#4f8f7a","#2c5547","#e8f7f0"],mats:["질풍 깃털","질풍 볏","질풍 보옥"],sk:["회피 거리","체술"],desc:"회오리를 날려 보냅니다. 회오리는 천천히 쫓아와요."},
  {k:"mudboar",name:"머드락",kind:"니아수(泥牙獸) · 아수종",shape:"mole",star:2,r:48,spd:100,el:"물",weak:"번개",em:["stomp","spikes","burrow"],moves:["burrow","swipe","charge","stomp","spikes"],c:["#5b4a3a","#3a2f24","#9fd0ff"],mats:["진흙 가죽","늪 엄니","진흙 보옥"],sk:["체력 증강","포술"],desc:"진흙을 튀기며 돌진합니다. 젖으면 스태미나가 느리게 차요."},
  {k:"vspider",name:"베노락스",kind:"독망충(毒網蟲) · 갑충종",shape:"spider",star:3,r:44,spd:120,el:"독",weak:"불",em:["web","spikes","pounce"],moves:["web","spikes","pounce","swipe","roar"],c:["#4a2f5c","#2a1a36","#b6ff6a"],mats:["독거미 껍질","독침","독침 보옥"],sk:["간파","파괴왕"],desc:"독 가시와 거미줄을 섞어 씁니다."},
- {k:"firebird",name:"파이로스",kind:"염조룡(炎鳥龍) · 조룡종",shape:"bird",star:3,r:44,spd:125,el:"불",weak:"물",em:["fireball","tornado","peck"],moves:["peck","fireball","tornado","charge","swipe"],c:["#d4562a","#8c2f14","#ffd166"],mats:["염조 깃털","염조 볏","염조 보옥"],sk:["속성 강화","공격"],desc:"불꽃 회오리와 화염탄을 뿜는 새."},
+ {k:"firebird",name:"파이로스",kind:"염조룡(炎鳥龍) · 조룡종",shape:"bird",star:3,r:44,spd:125,el:"불",weak:"물",em:["fireball","tornado","peck","roll"],moves:["peck","fireball","tornado","charge","swipe","roll","tailspin"],c:["#d4562a","#8c2f14","#ffd166"],mats:["염조 깃털","염조 볏","염조 보옥"],sk:["속성 강화","공격"],desc:"불꽃 회오리와 화염탄을 뿜는 새."},
  {k:"icecrab",name:"크리오스",kind:"빙갑해(氷甲蟹) · 갑각종",shape:"crab",star:4,r:52,spd:85,el:"얼음",weak:"불",em:["spikes","breath","quake"],moves:["swipe","spikes","breath","quake","stomp"],c:["#9cc7dc","#5a8aa3","#f2fbff"],mats:["빙갑","빙결 집게","빙갑 보옥"],sk:["가드 성능","귀마개"],desc:"얼음 가시와 냉기 브레스. 단단하지만 불에 약해요."},
  {k:"tserpent",name:"볼테사",kind:"뇌사룡(雷蛇龍) · 해룡종",shape:"serpent",star:4,r:40,spd:140,el:"번개",weak:"얼음",em:["beam","lightning"],moves:["beam","lightning","tailspin","charge","swipe"],c:["#3b3f8f","#1f2155","#fff26b"],mats:["뇌사 비늘","뇌사 지느러미","뇌사 보옥"],sk:["속성 강화","탄 강화"],desc:"번개 광선과 낙뢰. 기절을 조심하세요."},
  {k:"storm",name:"템페스타",kind:"폭풍익룡(暴風翼龍) · 익룡종",shape:"manta",star:5,r:54,spd:110,el:"번개",weak:"얼음",em:["lightning","tornado"],moves:["swipe","tornado","tornado","lightning","charge","roar","tailspin"],c:["#4b5d73","#27313d","#c8f3ff"],mats:["폭풍 비늘","폭풍 날개막","폭풍 보옥"],sk:["도전자","회피 성능"],desc:"폭풍 회오리와 낙뢰를 동시에 다룹니다."},
  {k:"abyss",name:"니그라쿠스",kind:"심연충(深淵蟲) · 다족종",shape:"centi",star:5,r:50,spd:125,el:"용",weak:"번개",em:["meteor","web"],moves:["web","meteor","pounce","spikes","roar","swipe"],c:["#2a2440","#100d1c","#a78bfa"],mats:["심연 껍질","심연 송곳니","심연 보옥"],sk:["약점 특효","파괴왕"],desc:"어둠 속에서 거미줄과 운석을 부릅니다."},
  {k:"bloodape",name:"크림조르",kind:"혈월수(血月獸) · 아수종",shape:"ape",star:6,r:52,spd:130,el:"용",weak:"얼음",em:["bigpounce","quake"],moves:["swipe","bigpounce","bigpounce","quake","roar","charge","meteor"],c:["#6b1f2a","#3a0f16","#ffb3c1"],mats:["혈월 털가죽","혈월 손톱","혈월 보옥"],sk:["공격","도전자"],desc:"분노하면 미친 듯이 뛰어오릅니다."},
- {k:"inferno",name:"인페르나",kind:"극염조(極炎鳥) · 조룡종",shape:"bird",star:6,r:48,spd:135,el:"불",weak:"얼음",em:["fireball3","tornado","breath","meteor"],moves:["peck","fireball3","tornado","breath","meteor","charge","roar"],c:["#ff6a2b","#9c2a0c","#fff1a8"],mats:["극염 깃털","극염 볏","극염 보옥"],sk:["속성 강화","혼신"],desc:"하늘을 태우는 불새."},
+ {k:"inferno",name:"인페르나",kind:"극염조(極炎鳥) · 조룡종",shape:"bird",star:6,r:48,spd:135,el:"불",weak:"얼음",em:["fireball3","tornado","breath","meteor","slam"],moves:["peck","fireball3","tornado","breath","meteor","charge","roar","slam","tailspin"],c:["#ff6a2b","#9c2a0c","#fff1a8"],mats:["극염 깃털","극염 볏","극염 보옥"],sk:["속성 강화","혼신"],desc:"하늘을 태우는 불새."},
  {k:"sky",name:"아스트레온",kind:"천붕룡(天崩龍) · 고룡종",shape:"serpent",star:7,r:48,spd:150,el:"번개",weak:"용",em:["beam","lightning","meteor"],moves:["beam","lightning","meteor","tailspin","charge","roar","tornado"],c:["#e8edf5","#8892a6","#7fd3ff"],mats:["천붕 비늘","천붕 뿔","천붕 보옥"],sk:["간파","약점 특효"],desc:"하늘을 무너뜨린다는 백색 고룡."},
  {k:"void",name:"니힐로스",kind:"공허룡(空虛龍) · 고룡종",shape:"wyvern",star:8,r:60,spd:115,el:"용",weak:"용",em:["fireball3","breath","meteor","lightning","tornado"],moves:["swipe","tailspin","fireball3","breath","meteor","lightning","tornado","charge","roar","quake"],c:["#1a1626","#05040a","#b388ff"],mats:["공허 비늘","공허 뿔","공허 보옥"],sk:["공격","혼신"],desc:"세계의 끝에서 온 존재. 최종 의뢰입니다."},
  {k:"hades",name:"스틱사",kind:"명계사룡(冥界蛇龍) · 고룡종",shape:"serpent",star:8,r:52,spd:150,el:"용",weak:"번개",em:["beam","breath","meteor","spikes"],moves:["beam","breath","meteor","spikes","tailspin","charge","roar","web"],c:["#22302a","#0c120e","#6bffb0"],mats:["명계 비늘","명계 뿔","명계 보옥"],sk:["포술","도전자"],desc:"죽은 자의 강을 건너는 뱀."},
@@ -762,12 +763,12 @@ const MONS=[
  {k:"lf_desert",lead:"desert",name:"사르바돈",kind:"사령룡(砂領龍) · 아룡종",shape:"raptor",star:2,r:38,spd:165,el:null,weak:"물",em:[],moves:["pounce","bite","swipe","charge","roar"],c:["#7a5a32","#4a3418","#ff7a3d"],mats:[],sk:["체술","공격"],desc:"사르바 무리를 이끄는 두목. 모래 위를 질주해요."},
  {k:"lf_volcano",lead:"volcano",name:"이그라돈",kind:"화미룡(火尾龍) · 아룡종",shape:"raptor",star:2,r:38,spd:150,el:"불",weak:"물",em:["fireball"],moves:["pounce","bite","fireball","swipe","roar"],c:["#5a2a1a","#2a120a","#ff8a3d"],mats:[],sk:["불 속성 강화","공격"],desc:"이그라 무리를 이끄는 두목. 불꼬리를 휘둘러요."},
  {k:"lf_snow",lead:"snow",name:"헬카로스",kind:"은렵랑(銀鬣狼) · 아수종",shape:"raptor",star:3,r:40,spd:170,el:"얼음",weak:"불",em:["breath"],moves:["pounce","bite","swipe","breath","roar"],c:["#9aaab6","#5a6a76","#7fe0ff"],mats:[],sk:["얼음 속성 강화","회피 성능"],desc:"헬카 무리를 이끄는 은빛 갈기의 두목."},
- {k:"lf_thunder",lead:"thunder",name:"페르치온",kind:"뇌관조(雷冠鳥) · 조룡종",shape:"bird",star:3,r:40,spd:130,el:"번개",weak:"얼음",em:["lightning"],moves:["peck","lightning","charge","swipe","roar"],c:["#3a4a6a","#1a2238","#ffe14d"],mats:[],sk:["번개 속성 강화","회피 성능"],desc:"페르츠 무리를 이끄는 두목. 뇌관깃에서 번개가 튀어요."},
+ {k:"lf_thunder",lead:"thunder",name:"페르치온",kind:"뇌관조(雷冠鳥) · 조룡종",shape:"bird",star:3,r:40,spd:130,el:"번개",weak:"얼음",em:["lightning","fireball","discharge"],moves:["peck","lightning","charge","swipe","roar","fireball","discharge","tailspin"],c:["#3a4a6a","#1a2238","#ffe14d"],mats:[],sk:["번개 속성 강화","회피 성능"],desc:"페르츠 무리를 이끄는 두목. 뇌관깃에서 번개가 튀어요."},
  {k:"lf_coast",lead:"coast",name:"코라곤",kind:"거겸해(巨鉗蟹) · 갑각종",shape:"crab",star:3,r:46,spd:95,el:"물",weak:"번개",em:["fireball"],moves:["swipe","stomp","spikes","charge","fireball"],c:["#a04a2a","#5a2010","#ffd0a0"],mats:[],sk:["가드 성능","물 속성 강화"],desc:"코라 무리를 이끄는 두목. 거대한 집게로 내리찍어요."},
  {k:"lf_abyss",lead:"abyss",name:"노크투스",kind:"야아익(夜牙翼) · 익룡종",shape:"bird",star:5,r:42,spd:140,el:"독",weak:"번개",em:["poison"],moves:["peck","gas","charge","swipe","roar"],c:["#2a1a3a","#140a1e","#c58cff"],mats:[],sk:["독 속성 강화","체력 증강"],desc:"노크 무리를 이끄는 두목. 어둠 속에서 독 송곳니를 드러내요."},
  {k:"thbeetle",name:"비르토",kind:"뇌갑충(雷甲蟲) · 갑충종",shape:"beetle",star:1,r:40,spd:95,el:"번개",weak:"불",em:["lightning","charge"],moves:["charge","swipe","lightning","stomp"],c:["#8a6a4a","#4a3626","#e8c36b"],round:1,aura:"#ffe14d",mats:[],sk:["번개 속성 강화","회피 성능"],desc:"등껍질에 전기를 모아 짧은 낙뢰를 떨어뜨립니다."},
  {k:"wtoad",name:"퐁가",kind:"수포와(水泡蛙) · 양서종",shape:"toad",star:1,r:42,spd:85,el:"물",weak:"번개",em:["fireball","tongue"],moves:["tongue","fireball","stomp","swipe"],c:["#4a8ab0","#1e4a66","#bfe8ff"],mats:[],sk:["물 속성 강화","체력 증강"],desc:"물방울 탄을 뱉어 몸을 젖게 만듭니다."},
- {k:"fbird",name:"피르코",kind:"화린조(火鱗鳥) · 조룡종",shape:"bird",star:1,r:36,spd:120,el:"불",weak:"물",em:["peck","fireball"],moves:["peck","fireball","charge","swipe"],c:["#9a6a44","#4e3420","#f0b070"],round:1,aura:"#ff8a3d",mats:[],sk:["불 속성 강화","공격"],desc:"꼬리깃에서 불씨를 튕겨 날립니다."}
+ {k:"fbird",name:"피르코",kind:"화린조(火鱗鳥) · 조룡종",shape:"bird",star:1,r:36,spd:120,el:"불",weak:"물",em:["peck","fireball","stab"],moves:["peck","fireball","charge","swipe","stab","tailspin"],c:["#9a6a44","#4e3420","#f0b070"],round:1,aura:"#ff8a3d",mats:[],sk:["불 속성 강화","공격"],desc:"꼬리깃에서 불씨를 튕겨 날립니다."}
 ];
 const MAXSTAR=8;
 const SKINM={wyvern:"비늘",serpent:"비늘",quad:"비늘",brute:"비늘",fish:"비늘",hydra:"비늘",bladewing:"칼비늘",raptor:"비늘",steed:"갈기",wolf:"털",crab:"갑각",golem:"갑각",beetle:"갑각",spider:"갑각",scorpion:"갑각",centi:"갑각",boar:"가죽",toad:"점액피",ape:"털가죽",mole:"털가죽",bird:"깃털",manta:"피막",jelly:"막"};
@@ -785,19 +786,19 @@ const VAR={charge_zig:[{k:"charge",len:230,aOff:.55},{k:"charge",len:230,aOff:-.
  charge_triple:[{k:"charge",len:420},{k:"charge",len:420,tm:.5},{k:"charge",len:420,tm:.5}],charge_uturn:[{k:"charge",len:440},{k:"charge",len:440,tm:.35}],
  breath_triple:[{k:"breath",aOff:-.45,tm:.8},{k:"breath",aOff:.45,tm:.4},{k:"breath",tm:.4}],fireball_rapid:[{k:"fireball"},{k:"fireball",tm:.45},{k:"fireball",tm:.45}],
  pounce_chain:[{k:"pounce"},{k:"pounce",tm:.55},{k:"pounce",tm:.55}],swipe_combo:[{k:"swipe",tm:.8},{k:"swipe",tm:.4},{k:"swipe",tm:.45}],
- tailspin_double:[{k:"tailspin"},{k:"tailspin",tm:.4}],meteor_rain:[{k:"meteor"},{k:"meteor",tm:.55}]};
-function initVariants(){Object.entries(VAR).forEach(([v,sq])=>{const b=ATT[sq[0].k];ATT[v]={...b,rec:b.rec*1.2}});
+ roll_double:[{k:"roll"},{k:"roll",len:400,tm:.4}],stab_double:[{k:"stab"},{k:"stab",tm:.4}],tailspin_double:[{k:"tailspin"},{k:"tailspin",tm:.4}],meteor_rain:[{k:"meteor"},{k:"meteor",tm:.55}]};
+function initVariants(){Object.assign(ATT,{leap:{tele:.6,rec:.9,dmg:20,min:110,max:()=>380},roll:{tele:.7,rec:1,dmg:23,min:130,max:()=>520},slam:{tele:.9,rec:1,dmg:24,min:0,max:r=>r+150},discharge:{tele:1,rec:.9,dmg:20,min:0,max:r=>r+190},stab:{tele:.5,rec:.8,dmg:12,min:40,max:r=>r+230}});Object.entries(VAR).forEach(([v,sq])=>{const b=ATT[sq[0].k];ATT[v]={...b,rec:b.rec*1.2}});
 Object.assign(ATT,{breath_sweep:{tele:.8,rec:1.1,dmg:22,min:60,max:()=>340},beam_sweep:{tele:.9,rec:1,dmg:24,min:100,max:()=>560},fireball_ring:{tele:.8,rec:1,dmg:16,min:0,max:()=>520},
  lightning_line:{tele:.7,rec:.8,dmg:20,min:80,max:()=>520},lightning_ring:{tele:.8,rec:.9,dmg:20,max:r=>r+250}})}
 const PATS={boar:["charge_triple","charge_uturn"],crab:["swipe_combo"],wyvern:["breath_sweep","fireball_rapid","charge_uturn"],venom:["pounce_chain"],wolf:["pounce_chain","lightning_line","charge_zig"],
  ape:["swipe_combo","breath_sweep"],serpent:["beam_sweep","tailspin_double"],black:["charge_triple","meteor_rain"],magma:["fireball_ring","breath_triple"],thunderape:["lightning_ring","charge_zig","swipe_combo"],
- iceserpent:["beam_sweep","breath_triple"],elder:["breath_sweep","fireball_ring","meteor_rain"],bird:["charge_zig"],spider:["pounce_chain"],gale:["charge_zig"],mudboar:["charge_uturn"],vspider:["pounce_chain"],
- firebird:["fireball_rapid","charge_zig"],icecrab:["breath_sweep"],tserpent:["lightning_line","beam_sweep"],storm:["lightning_ring","charge_zig"],abyss:["meteor_rain"],bloodape:["pounce_chain","swipe_combo"],
- inferno:["fireball_ring","breath_sweep"],sky:["beam_sweep","lightning_ring"],void:["breath_sweep","fireball_ring","lightning_line"],hades:["beam_sweep","tailspin_double"],toad:["pounce_chain"],beetle:["charge_triple"],
+ iceserpent:["beam_sweep","breath_triple"],elder:["breath_sweep","fireball_ring","meteor_rain"],bird:["charge_zig","swipe_combo","charge_uturn"],spider:["pounce_chain"],gale:["charge_zig","charge_uturn"],mudboar:["charge_uturn"],vspider:["pounce_chain"],
+ firebird:["fireball_rapid","charge_zig","roll_double","tailspin_double"],icecrab:["breath_sweep"],tserpent:["lightning_line","beam_sweep"],storm:["lightning_ring","charge_zig"],abyss:["meteor_rain"],bloodape:["pounce_chain","swipe_combo"],
+ inferno:["fireball_ring","breath_sweep","fireball_rapid","tailspin_double"],sky:["beam_sweep","lightning_ring"],void:["breath_sweep","fireball_ring","lightning_line"],hades:["beam_sweep","tailspin_double"],toad:["pounce_chain"],beetle:["charge_triple"],
  brute:["swipe_combo","charge_uturn"],fish:["beam_sweep","pounce_chain"],toad2:["pounce_chain"],beetle2:["charge_zig","lightning_line"],fish2:["beam_sweep","breath_triple"],brute2:["fireball_rapid","breath_sweep"],
  toad3:["lightning_ring"],beetle3:["charge_triple"],quad:["breath_sweep"],brute3:["swipe_combo","breath_triple"],quad2:["fireball_ring","breath_sweep"],fish3:["beam_sweep"],quad3:["lightning_line","lightning_ring"],
  beetle4:["charge_triple","meteor_rain"],manta2:["beam_sweep","charge_zig"],golem2:["meteor_rain"],centi2:["breath_triple"],mole2:["charge_uturn"],mount:["meteor_rain"],ouro:["beam_sweep"],colossus:["breath_sweep","meteor_rain"],
- aero:["lightning_ring","charge_zig"],mille:["breath_triple"],gargan:["fireball_ring","breath_sweep"],scorp:["swipe_combo"],raptor:["pounce_chain","charge_zig"],jelly:["lightning_ring"],steed:["charge_zig","charge_triple"],hydra:["breath_triple","fireball_rapid"]};
+ aero:["lightning_ring","charge_zig"],mille:["breath_triple"],gargan:["fireball_ring","breath_sweep"],scorp:["swipe_combo"],raptor:["pounce_chain","charge_zig"],jelly:["lightning_ring"],steed:["charge_zig","charge_triple"],hydra:["breath_triple","fireball_rapid"],lf_thunder:["charge_triple","fireball_rapid"],fbird:["stab_double","swipe_combo","fireball_rapid"]};
 MONS.forEach(m=>(PATS[m.k]||[]).forEach(v=>{if(!m.moves.includes(v))m.moves.push(v)}));
 MONS.forEach(m=>{let h=0;for(const ch of m.k)h=(h*31+ch.charCodeAt(0))>>>0;const base=[...new Set(m.moves.filter(x=>!VAR[x]&&!["roar","burrow","web","gas"].includes(x)&&!x.includes("_")))];if(base.length<2)return;
   for(let s2=1;s2<=2;s2++){h=(Math.imul(h,1103515245)+12345)>>>0;const a=base[h%base.length];h=(Math.imul(h,1103515245)+12345)>>>0;let b=base[h%base.length];if(b===a)b=base[(h+1)%base.length];
@@ -825,6 +826,7 @@ const QT={lf_forest:"무리의 두목은 숲길에",lf_jungle:"독니의 우두�
  iceserpent:"얼어붙은 바다의 주인",elder:"종언의 기운",bloodape:"붉은 달이 뜨는 밤",inferno:"하늘을 태우는 날개",quad:"그치지 않는 눈보라",brute3:"검은 송곳니가 깨어날 때",mole2:"발밑의 미로",colossus:"거신의 발걸음",aero:"하늘이 내려온 날",
  sky:"흰 번개의 고룡",quad2:"화염의 왕",fish3:"어선을 삼키는 그림자",mille:"숲을 덮는 독의 행렬",hydra:"세 개의 목, 하나의 포효",
  void:"색을 잃은 세계",hades:"망자의 강을 거슬러",quad3:"하늘이 무너지는 날",beetle4:"재앙은 깨어나고",gargan:"산을 무너뜨리는 것"};
+const HJ=m=>{const r=/^([^(·]+)\(/.exec(m.kind||"");return r?r[1].trim():""};const MNH=m=>HJ(m)?`${m.name} <span class="hj">${HJ(m)}</span>`:m.name;
 const qVerb=m=>m.kind.includes("고룡종")||m.giant||m.flagship?"토벌":"사냥";
 const qCond=(m,urg)=>urg?`★${m.star-1} 몬스터 2마리 토벌 (★${m.star})`:m.star===1?"조건 없음 (★1)":`★${m.star} 긴급 퀘스트 달성 (★${m.star})`;
 
@@ -971,7 +973,7 @@ const SKILLS={
  "약점 특효":{max:3,d:"머리 공격 회심률 +17.5%/Lv"},
  "혼신":{max:5,d:"스태미나 가득일 때 회심률 +7%/Lv"},
  "도전자":{max:5,d:"몬스터 분노 중 공격력 +4.6%, 회심률 +3.5%/Lv"},
- "집중":{max:5,d:"대검 모으기·보우건 장전 속도 +8.3%/Lv"},
+ "집중":{max:5,d:"대검·해머·활 모으기, 보우건 장전 속도 +8.3%/Lv"},
  "회피 성능":{max:5,d:"회피 무적 시간 +0.046초/Lv"},
  "회피 거리":{max:5,d:"회피 거리 +8.3%/Lv"},
  "체력 증강":{max:5,d:"최대 체력 +10/Lv"},
@@ -1022,7 +1024,7 @@ function hzOf(d){if(d._hz)return d._hz;let h=2166136261;for(const ch of d.k+"/hz
   return d._hz=z}
 const hzMul=(d,n)=>{if(n==="core")return 2;const Z=hzOf(d),z=Z[n]||(Z.body&&{cut:Z.body.cut*1.15,blunt:Z.body.blunt*1.15,shot:Z.body.shot*1.15});return z?z[DTYPE(S.weapon)]/50:1};
 const HABI=["","고요의 숲","모래 평원","얼음 산맥","안개 해안","화산 지대","심연의 동굴","불타는 고원","종언의 땅"];
-const ATTN={charge_zig:"지그재그 돌진",charge_triple:"3연 돌진",charge_uturn:"되돌아 돌진",breath_sweep:"휩쓸기 브레스",breath_triple:"3연 브레스",fireball_rapid:"연속 화염탄",fireball_ring:"전방위 탄",beam_sweep:"휩쓸기 광선",pounce_chain:"연속 덮치기",swipe_combo:"연속 할퀴기",tailspin_double:"2연 꼬리 회전",meteor_rain:"2연 낙하",lightning_line:"전진 낙뢰",lightning_ring:"원형 낙뢰",sting:"독침 찌르기",swipe:"할퀴기",stomp:"짓밟기",tailspin:"꼬리 회전",charge:"돌진",fireball:"탄 발사",fireball3:"3연 탄",pounce:"덮치기",lightning:"낙뢰",breath:"브레스",beam:"광선",quake:"지면 강타",spikes:"가시 솟구치기",meteor:"낙하물",bigpounce:"점프 내려찍기",roar:"포효",peck:"3연 쪼기",web:"거미줄",tornado:"회오리",bite:"물어뜯기",tongue:"혀 공격",gas:"독 안개",burrow:"땅파기"};
+const ATTN={leap:"도약 내려찍기",roll:"구르기 돌진",slam:"화염 내려찍기",discharge:"뇌전 방전",stab:"종종 찌르기",roll_double:"구르기 2연",stab_double:"찌르기 2연",charge_zig:"지그재그 돌진",charge_triple:"3연 돌진",charge_uturn:"되돌아 돌진",breath_sweep:"휩쓸기 브레스",breath_triple:"3연 브레스",fireball_rapid:"연속 화염탄",fireball_ring:"전방위 탄",beam_sweep:"휩쓸기 광선",pounce_chain:"연속 덮치기",swipe_combo:"연속 할퀴기",tailspin_double:"2연 꼬리 회전",meteor_rain:"2연 낙하",lightning_line:"전진 낙뢰",lightning_ring:"원형 낙뢰",sting:"독침 찌르기",swipe:"할퀴기",stomp:"짓밟기",tailspin:"꼬리 회전",charge:"돌진",fireball:"탄 발사",fireball3:"3연 탄",pounce:"덮치기",lightning:"낙뢰",breath:"브레스",beam:"광선",quake:"지면 강타",spikes:"가시 솟구치기",meteor:"낙하물",bigpounce:"점프 내려찍기",roar:"포효",peck:"3연 쪼기",web:"거미줄",tornado:"회오리",bite:"물어뜯기",tongue:"혀 공격",gas:"독 안개",burrow:"땅파기"};
 const CLSD={아수종:"네 발로 땅을 누비는 짐승 무리",갑각종:"단단한 껍데기로 몸을 감싼 무리",비룡종:"날개로 하늘을 누비는 대형 비룡 무리",아룡종:"날렵한 몸놀림으로 사냥하는 아룡 무리",해룡종:"물과 바다에 적응한 길쭉한 용 무리",고룡종:"생태가 거의 밝혀지지 않은 재앙급 존재",조룡종:"새와 닮은 깃털 달린 소형 용 무리",갑충종:"거대한 곤충 무리",양서종:"물가와 늪에 사는 끈적한 피부의 무리",수룡종:"거대한 턱과 굵은 다리를 가진 포식자 무리",어룡종:"물고기를 닮은 지느러미 달린 용 무리",익룡종:"넓은 날개막으로 활공하는 무리",다족종:"수많은 다리로 기어 다니는 무리",갑수종:"등껍질을 등에 진 거대한 짐승 무리",부유종:"물속이나 공중에 둥실 떠다니는 무리"};
 const RANGED=["lbg","hbg","bow"],SHN=["초록","파랑","하양","보라"],SHM=[.92,1,1.08,1.13],SHC=["#43a047","#2f7fe0","#eef2f5","#9b4fe0"];
 function wstat(type,key){
@@ -1439,7 +1441,7 @@ function upField(dt){if(TRAIN)return;
     if(M.state!=="dead"&&!M.under&&Math.hypot(M.x-v.x,M.y-v.y)<v.r+M.r*.6){dealRaw(Math.round(25+M.d.star*12),M.x,M.y,"#ff9f43",true);texts.push({x:M.x,y:M.y-M.r-20,t:"분출에 휘말렸다!",c:"#ffb347",l:.9})}}}
   pushOut(P,PR);if(A&&!A.gone&&A.state!=="down")pushOut(A,10);
   {const foc1=M;for(const mm of (OPEN?MSL:[M])){M=mm;if(M.state!=="dead"&&!M.under){for(let i=FLD.solids.length-1;i>=0;i--){const o=FLD.solids[i],d=Math.hypot(M.x-o.x,M.y-o.y),mn=o.r+M.r*.7;if(d<mn&&d>0){
-    if(M.state==="act"&&M.atk==="charge"){FLD.solids.splice(i,1);fx.push({k:"boom",x:o.x,y:o.y,r:o.r+30,l:.45,col:"#bfa57c"});if(!M.d.giant){M.seq=null;M.state="stagger";M.t=2.4;M.tg=null;banner("벽에 부딪혔다!","돌진 중 장애물에 부딪혀 쓰러졌어요",1.2)}continue}
+    if(["charge","roll"].includes(M.atk)&&M.state==="act"){FLD.solids.splice(i,1);fx.push({k:"boom",x:o.x,y:o.y,r:o.r+30,l:.45,col:"#bfa57c"});if(!M.d.giant){M.seq=null;M.state="stagger";M.t=2.4;M.tg=null;banner("벽에 부딪혔다!","돌진 중 장애물에 부딪혀 쓰러졌어요",1.2)}continue}
     if(M.d.giant){FLD.solids.splice(i,1);fx.push({k:"boom",x:o.x,y:o.y,r:o.r+20,l:.4,col:"#bfa57c"});continue}
     M.x=o.x+(M.x-o.x)/d*mn;M.y=o.y+(M.y-o.y)/d*mn}}}}M=foc1}}
 function drawField(){const t=elapsed;
@@ -1619,9 +1621,9 @@ function meldPlan(c){let need=c.pt;const use={};const L=Object.entries(S.mats).f
   for(const[n,q]of L){if(need<=0)break;const v=matVal(n),k=Math.min(q-2,Math.ceil(need/v));if(k>0){use[n]=k;need-=k*v}}
   let gem=null;if(c.gem){gem=Object.keys(S.mats).filter(n=>isGem(n)&&S.mats[n]>0).sort((a,b)=>S.mats[b]-S.mats[a])[0]||null;if(gem)use[gem]=(use[gem]||0)+1}
   return{use,ok:need<=0&&(!c.gem||!!gem),short:Math.max(0,need),noGem:!!c.gem&&!gem}}
-function genCharm(star){const pool=DECOS.filter(n=>n!=="회심격"||star>=4);const a=pick(pool);const sk={[a]:Math.min(SKILLS[a].max,ri(1,Math.min(3,1+Math.ceil(star/3))))};
-  if(Math.random()<.55){let b=pick(pool);if(b!==a)sk[b]=Math.min(SKILLS[b].max,ri(1,2))}
-  const ns=ri(0,star>=5?3:2),slots=[];for(let i=0;i<ns;i++)slots.push(ri(1,Math.min(3,1+Math.floor(star/3))));slots.sort((x,y)=>y-x);
+function genCharm(star){const pool=DECOS.filter(n=>n!=="회심격"||star>=4);const a=pick(pool),hi=star>=8,lk=(x,y)=>hi?Math.max(ri(x,y),ri(x,y)):ri(x,y);const sk={[a]:Math.min(SKILLS[a].max,lk(1,Math.min(3,1+Math.ceil(star/3))))};
+  if(Math.random()<(hi?.8:.55)){let b=pick(pool);if(b!==a)sk[b]=Math.min(SKILLS[b].max,lk(1,2))}
+  const ns=hi?ri(1,3):ri(0,star>=5?3:2),slots=[];for(let i=0;i<ns;i++)slots.push(lk(1,Math.min(3,1+Math.floor(star/3))));slots.sort((x,y)=>y-x);
   const rare=Object.values(sk).reduce((x,y)=>x+y,0)+slots.reduce((x,y)=>x+y,0);
   return{id:"c"+Date.now().toString(36)+Math.random().toString(36).slice(2,6),name:["초심자의","수렵의","무사의","왕의","용의","신의"][Math.min(5,Math.floor(rare/2))]+" 호석",sk,slots}}
 const DECOLV={};const decoSk=n=>Array.isArray(DECOLV[n])?DECOLV[n]:[[n,DECOLV[n]||1]];
@@ -1734,7 +1736,7 @@ function profileDialog(){maxHpNow();const w=weaponInfo(S.weapon,S.eq[S.weapon]||
    <button id="oX">닫기</button>`);$("oX").onclick=()=>$("ov").hidden=true}
 
 const VERSION="v2.3",UPDATES=[
- {v:"v2.3",d:"2026-11-14",items:["주요 스킬 최대 레벨 확장 (핵심 7, 보조 5) · 레벨당 효과 조정","라이트보우건: 백파이어 대쉬(빈틈 있음)·백플립 난사로 이름 변경","호석 연마: 소재를 직접 골라 연마 + 연출, 소재 아이콘, 부위별 소재 가치","호석 잠금 (버릴 수 없음)","버튼 위치·크기 직접 편집","무리 두목 몬스터 이름 정리 (한자명) · 소재 이름 변경","사냥 화면 정리: 체력·스태미나·버프만 상단, 무기 자원은 아래 (PC는 궁극기 게이지도)","튜토리얼 개편 (건너뛰기 없음, 조작 상세 안내) · 조작법 표기 삭제","내려치기 원근감과 휘두르기 잔상","냥꾼: 공격 삭제·무적, 지원 스킬 조합 (장비 탭)"]},
+ {v:"v2.3",d:"2026-11-14",items:["주요 스킬 최대 레벨 확장 (핵심 7, 보조 5) · 레벨당 효과 조정","라이트보우건: 백파이어 대쉬(빈틈 있음)·백플립 난사로 이름 변경","호석 연마: 소재를 직접 골라 연마 + 연출, 소재 아이콘, 부위별 소재 가치","호석 잠금 (버릴 수 없음)","버튼 위치·크기 직접 편집","무리 두목 몬스터 이름 정리 (한자명) · 소재 이름 변경","사냥 화면 정리: 체력·스태미나·버프만 상단, 무기 자원은 아래 (PC는 궁극기 게이지도)","튜토리얼 개편 (건너뛰기 없음, 조작 상세 안내) · 조작법 표기 삭제","내려치기 원근감과 휘두르기 잔상","냥꾼: 공격 삭제·무적, 지원 스킬 조합 (장비 탭)","조룡종 패턴 추가: 펙코루 도약·꼬리 휘돌기, 시르페스 꼬리 휘돌기, 파이로스 구르기·꼬리 휘돌기"]},
  {v:"v2.2",d:"2026-11-13",items:["해머 발도 공격 피해 −60%","라이트보우건 백파이어 대쉬 거리 −50%, 백플립 난사 모션 −50% (탄 수도 절반)","쌍검 스킬1: 으스름 뛰기 → 회전베기 (짧은 무적 회전 베기)","카운터 대기 자세 시간 단축, 실패하면 잠시 움직이지 못하는 빈틈 추가","조충곤 마크탄 사거리 제한"]},
  {v:"v2.1",d:"2026-11-13",items:["무기 시스템 개편: 납도/발도 구분 (납도 중 평타는 발도 공격, 회피 스태미나 20)","버튼 재배치: 평타·회피·회복약 / 스킬1·스킬2·납도 / 궁극기","14개 무기 스킬 재설계와 궁극기 추가 (타격으로 게이지, 저스트 회피·저스트 가드는 30%)","라이트보우건: 백파이어 대쉬·백플립 난사, 저스트 회피 시 전탄 장전 + 강화탄","헤비보우건: 개머리판 카운터, 철갑유탄 부착 폭발, 저격용탄","활: 백스텝 사격·강연사, 조충곤: 받아치기·마크탄 랜덤 진액·천공 난무","방패 디자인 단순화","모바일 부위 선택 버튼 삭제, PC는 기본 자동 조준 + 마우스 커서 표시"]},
  {v:"v2.0",d:"2026-11-13",items:["대장간 호석 연마: 남는 소재로 호석 제작 (사냥 보상 호석 폐지)","폭발·낙뢰·포효 등 필드 소리는 가까이 있을 때만 들림","의뢰 창 개편: 왼쪽 의뢰 목록 + 오른쪽 상세 정보","냥꾼 폭탄 삭제","몬스터가 구역을 옮길 때 빠르게 이동","장비 변경 창 무기 아이콘에 속성 표시","무기 그림 개선 (칼날·손잡이·방패 등)","모바일: 대검·해머 모으기, 활 모아쏘기를 한 번 눌러 시작·한 번 더 눌러 공격","PC: 갈무리 표시에 [F] 키 안내","독안개·거미줄 장판에 지속 피해 (회피 중에는 피해 없음)","저스트 회피 후 라이트보우건 카운터 샷·쌍검 스크류가 확실히 나가도록 수정","팝업 ✕ 버튼을 창 옆으로 이동","간파·상쇄 성공 문구 중복 수정","근접 무기 경직 유발 보너스 감소"]},
@@ -1849,7 +1851,7 @@ function renderHub(){
       if(e.x){const kn=e.done||e.ready;ic=kn?PORT[e.x.k]:null;ti=e.x.t;sub=`${e.x.urg?"긴급 임무":"임무"} ${e.i+1} · ${MAPI[mapOf(e.m)]} ${MAPN[mapOf(e.m)]}`;bd=e.done?'<i class="qb ok">완료</i>':e.ready?(e.x.urg?'<i class="qb urg">긴급</i>':'<i class="qb new">NEW</i>'):'<i class="qb lk">잠김</i>';cls=(e.x.urg?" urg":"")+(kn?"":" lock")}
       else if(e.q){ic=PORT[e.m.k];ti="폭주하는 혼결: "+(QT[e.m.k]||e.m.name);sub=e.q.aff.map(a=>AFF[a].n).join(" · ");bd='<i class="qb mut">혼결</i>'}
       else if(e.m){if(!e.av)return `<div class="qrow lock"><span class="qic">?</span><span class="qtx"><b>???</b><small>임무를 진행하면 열려요</small></span></div>`;
-        ic=PORT[e.m.k];ti=QT[e.m.k]||e.m.name;sub=`${MAPI[mapOf(e.m)]} ${MAPN[mapOf(e.m)]} · ${e.m.name}`;const c=S.cleared[e.m.k]||0;bd=c?`<i class="qb ok">${c}회</i>`:'<i class="qb new">첫 사냥</i>';if(e.m.giant)cls=" urg"}
+        ic=PORT[e.m.k];ti=QT[e.m.k]||e.m.name;sub=`${MAPI[mapOf(e.m)]} ${MAPN[mapOf(e.m)]} · ${MNH(e.m)}`;const c=S.cleared[e.m.k]||0;bd=c?`<i class="qb ok">${c}회</i>`:'<i class="qb new">첫 사냥</i>';if(e.m.giant)cls=" urg"}
       else if(e.id==="deep"){ti="심층 원정";sub=`로그라이트 · 최고 ${S.deepBest||0}층`}
       else{ic=PORT.dummy;ti="훈련장";sub="무기 연습 · DPS 측정"}
       return `<button class="qrow${cls}${e.id===qSel?" sel":""}" data-qsel="${e.id}"><span class="qic">${ic?`<img src="${ic}" alt="">`:e.id==="deep"?"🌀":"?"}</span><span class="qtx"><b>${ti}</b><small>${sub}</small></span>${bd}</button>`};
@@ -1858,18 +1860,18 @@ function renderHub(){
     const det=()=>{const e=list.find(z=>z.id===qSel);if(!e)return `<p class="hint" style="margin:0;color:var(--muted)">의뢰를 고르세요.</p>`;
       if(e.x){const x=e.x,m=e.m,kn=e.done||e.ready;
         return `<div class="qd-h${x.urg?" urg":""}"><small>${x.urg?"긴급 임무":"임무"} ${e.i+1}</small><h3>${x.t}</h3><span class="stars">${"★".repeat(m.star)}</span></div>
-        <div class="qd-m"><img src="${PORT[kn?x.k:"dummy"]}" style="${kn?"":"filter:brightness(0) opacity(.35)"}" alt=""><div>${sec("목표",`${kn?m.name:"???"} 1마리 ${qVerb(m)}`)}${sec("지역",`${MAPI[mapOf(m)]} ${MAPN[mapOf(m)]}`)}${sec("의뢰인",x.from==="바르텐"?"길드장 바르텐":"접수원 리나")}</div></div>
+        <div class="qd-m"><img src="${PORT[kn?x.k:"dummy"]}" style="${kn?"":"filter:brightness(0) opacity(.35)"}" alt=""><div>${sec("목표",`${kn?MNH(m):"???"} 1마리 ${qVerb(m)}`)}${sec("지역",`${MAPI[mapOf(m)]} ${MAPN[mapOf(m)]}`)}${sec("의뢰인",x.from==="바르텐"?"길드장 바르텐":"접수원 리나")}</div></div>
         ${x.cond.length?sec("수주 조건",x.cond.map(condText).map(c=>`${c[2]?"✅":"⬜"} ${c[0]} <small style="color:var(--muted)">(${c[1]})</small>`).join("<br>")):""}
         <p class="qd-t">${kn?x.in:"조건을 채우면 의뢰 내용이 공개돼요."}</p>
         ${sec("완료 보상",[x.unlock.star?`★${x.unlock.star} 자유 퀘스트`:"",x.unlock.map?`${MAPI[x.unlock.map]} ${MAPN[x.unlock.map]}`:"",x.unlock.giant?"대형 몬스터 퀘스트":"",x.unlock.end?"엔딩":""].filter(Boolean).join(" · ")||"-")}
         ${e.ready&&(!e.done||TESTMODE)?`<button class="qgo${x.urg?" urg":""}" data-go="${e.id}">${e.done?"다시 하기":x.urg?"긴급 출발":"출발"}</button>`:`<button class="qgo" disabled>${e.done?"완료한 임무":"잠김"}</button>`}`}
       if(e.q){const m=e.m;return `<div class="qd-h mut"><small>혼결종 의뢰</small><h3>폭주하는 혼결: ${QT[m.k]||m.name}</h3><span class="stars">${"★".repeat(m.star)}</span></div>
-        <div class="qd-m"><img src="${PORT[m.k]}" alt=""><div>${sec("목표",`혼결 ${m.name} 1마리 ${qVerb(m)}`)}${sec("지역",`${MAPI[mapOf(m)]} ${MAPN[mapOf(m)]} · 전용 필드`)}${sec("의뢰인","사냥꾼 길드")}</div></div>
+        <div class="qd-m"><img src="${PORT[m.k]}" alt=""><div>${sec("목표",`혼결 ${MNH(m)} 1마리 ${qVerb(m)}`)}${sec("지역",`${MAPI[mapOf(m)]} ${MAPN[mapOf(m)]} · 전용 필드`)}${sec("의뢰인","사냥꾼 길드")}</div></div>
         ${sec("혼결 특성",e.q.aff.map(a=>`<b style="color:${AFF[a].c}">${AFF[a].n}</b> ${AFF[a].d}`).join("<br>"))}${sec("보상","소재 1.5배 · 혼결정")}
         <button class="qgo" data-go="${e.id}">출발</button><button class="qgo sec" data-mqr="1">혼결종 의뢰 새로 받기</button>`}
       if(e.m){const m=e.m,c=S.cleared[m.k]||0,cr=S.crowns&&S.crowns[m.k];
         return `<div class="qd-h"><small>자유 퀘스트${m.giant?" · 대형":""}</small><h3>${QT[m.k]||m.name}</h3><span class="stars">${"★".repeat(m.star)}</span></div>
-        <div class="qd-m"><img src="${PORT[m.k]}" alt=""><div>${sec("목표",`${m.name} 1마리 ${qVerb(m)}`)}${sec("지역",`${MAPI[mapOf(m)]} ${MAPN[mapOf(m)]}`)}${sec("속성",`${elTag(m.el)} 약점 ${m.weak}`)}</div></div>
+        <div class="qd-m"><img src="${PORT[m.k]}" alt=""><div>${sec("목표",`${MNH(m)} 1마리 ${qVerb(m)}`)}${sec("지역",`${MAPI[mapOf(m)]} ${MAPN[mapOf(m)]}`)}${sec("속성",`${elTag(m.el)} 약점 ${m.weak}`)}</div></div>
         <p class="qd-t">${m.desc}</p>${sec("주요 보상",rew(m))}${sec("기록",c?`토벌 ${c}회${S.best[m.k]?` · 최단 ${fmt(S.best[m.k])}`:""}${cr?" · "+["gm","sb","gb"].filter(k=>cr[k]).map(k=>k==="sb"?"🥈":"👑").join(""):""}`:"아직 기록 없음")}
         <button class="qgo" data-go="${e.id}">출발</button>`}
       if(e.id==="deep")return `<div class="qd-h mut"><small>로그라이트</small><h3>심층 원정</h3></div><p class="qd-t">무작위 몬스터를 연속으로 사냥해요. 층마다 버프 카드를 고르고, 한 번 쓰러지면 끝. 깊이 갈수록 보상이 커져요.</p>${sec("최고 기록",`${S.deepBest||0}층`)}<button class="qgo" data-go="deep">출발</button>`;
@@ -2249,6 +2251,7 @@ function sockPicker(key,i){
   $("oX").onclick=()=>$("ov").hidden=true;
 }
 /*old charmChooser removed*/
+const cmpV=(a,b)=>{if(b==null)return"";const d=a-b;return d?` <span class="${d>0?"up":"dn"}">${d>0?"▲":"▼"}${Math.abs(d)}</span>`:""};
 function eqWInfo(it,cur){const w=it.info,c=weaponInfo(S.weapon,cur),m=it.mk==="starter"?null:MON[it.mk],same=it.id===cur;
   return `<h4>${w.name}</h4><small class="stars">${"★".repeat(m?m.star:1)}</small><table>
   <tr><td>공격력</td><td>${w.raw}${same?"":cmpV(w.raw,c.raw)}</td></tr>
@@ -2423,7 +2426,7 @@ function startHswing(lv){P.state="hswing";P.lv=lv;P.t=0;P.hit=false;P.hn=0;P.ang
 function startOffset(){P.state="offset";P.t=0;P.hit=false;P.offOK=false;P.st=Math.max(0,P.st-stc(10));P.ang=aimAng()}
 function offsetOK(){if(P.offOK)return;counterOK("격돌!");P.offOK=true;P.inv=.5;freeze=.12;shake=.2;P.t=Math.max(P.t,.28);P.hit=false;
   fx.push({k:"ring",x:P.x,y:P.y,r:44,l:.35});
-  if(M.state==="act"&&M.atk==="charge")mEnd();
+  if(["charge","roll"].includes(M.atk)&&M.state==="act")mEnd();
   if(M.state!=="dead"){M.ko+=M.koT*.35;if(dist(P,M)<M.r+140&&M.state!=="stagger"){M.state="stagger";M.t=1.2;M.tg=null}}}
 function startLCounter(){P.state="lcounter";P.t=0;P.cOK=false;P.ang=aimAng();P.st=Math.max(0,P.st-stc(8))}
 function startCThrust(ok){P.state="cthrust";P.t=0;P.hit=false;P.cOK=ok;P.ang=aimAng()}
@@ -2454,7 +2457,7 @@ function parryOK(sx,sy){
   texts.push({x:P.x,y:P.y-30,t:"패리!",c:"#7fd3ff",l:.9,big:true});
   fx.push({k:"ring",x:P.x,y:P.y,r:40,l:.35});
   for(let i=0;i<12;i++)fx.push({k:"spark",x:P.x+Math.cos(P.ang)*18,y:P.y+Math.sin(P.ang)*18,vx:rand(-260,260),vy:rand(-260,260),l:.35});
-  if(M.state==="act"&&M.atk==="charge")mEnd();
+  if(["charge","roll"].includes(M.atk)&&M.state==="act")mEnd();
   if(M.state!=="dead"&&dist(P,M)<M.r+130){M.state="stagger";M.t=.9;M.tg=null}
 }
 function startTackle(next,kc){P.dbuf=-9;P.state="tackle";P.t=0;P.hit=false;P.next=next;P.kc=kc||0;P.st=Math.max(0,P.st-stc(10));P.ang=aimAng();P.chain=null}
@@ -2803,28 +2806,33 @@ function matIcon(n,sz){sz=sz||24;const i=matInfo(n),[a,b,c]=i.c,E=i.el?ELC[i.el]
   return `<svg class="mic" width="${sz}" height="${sz}" viewBox="0 0 24 24" stroke-width="1.4" aria-hidden="true">${p}</svg>`}
 const CTIER=["초심자의","수렵의","무사의","왕의","용의","신의"],CTC=["#9aa3ad","#43a047","#2f7fe0","#9b4fe0","#e2b85a","#ff4d6d"];
 const ctier=ch=>Math.max(0,CTIER.findIndex(t=>ch.name.startsWith(t)));
-function meldDialog(c,alloc){alloc=alloc||{};if(S.charms.length>=40){overlay(`<h3 class="big">호석이 가득 찼어요</h3><p>호석은 40개까지 가질 수 있어요. 장비 탭 호석 칸에서 필요 없는 호석을 버려 주세요.</p><button id="oA">확인</button>`);$("oA").onclick=()=>$("ov").hidden=true;return}
-  const sum=Object.entries(alloc).reduce((a,[n,q])=>a+matVal(n)*q,0),gemOk=!c.gem||Object.keys(alloc).some(n=>isGem(n)&&alloc[n]>0),ok=sum>=c.pt&&gemOk;
+function meldDialog(c,alloc,cnt){alloc=alloc||{};const room=Math.max(0,40-S.charms.length);cnt=Math.max(1,Math.min(cnt||1,10,room||1));if(S.charms.length>=40){overlay(`<h3 class="big">호석이 가득 찼어요</h3><p>호석은 40개까지 가질 수 있어요. 장비 탭 호석 칸에서 필요 없는 호석을 버려 주세요.</p><button id="oA">확인</button>`);$("oA").onclick=()=>$("ov").hidden=true;return}
+  const need=c.pt*cnt,sum=Object.entries(alloc).reduce((a,[n,q])=>a+matVal(n)*q,0),gemN=Object.entries(alloc).reduce((a,[n,q])=>a+(isGem(n)?q:0),0),gemOk=!c.gem||gemN>=cnt,ok=sum>=need&&gemOk;
   const L=Object.entries(S.mats).filter(([n,q])=>q>0&&matVal(n)>0).sort((x,y)=>matVal(x[0])-matVal(y[0])||y[1]-x[1]);
   const prev=document.querySelector(".meldList"),sc=prev?prev.scrollTop:0;
-  overlay(`<h3 class="big">${c.n}</h3><p style="margin:0 0 6px">소재를 골라 <b>소재 가치 ${c.pt}</b>을 채우세요${c.gem?" · <b>보옥 1개 이상 필요</b>":""}. 같은 몬스터라도 부위마다 가치가 달라요.</p>
-   <div class="mbar"><i style="width:${Math.min(100,sum/c.pt*100)}%"></i><b>${Math.floor(sum)} / ${c.pt}</b></div>
+  overlay(`<h3 class="big">${c.n}</h3><div style="display:flex;align-items:center;justify-content:center;gap:10px;margin:0 0 6px"><button class="sec" id="cM" style="flex:none;width:auto;padding:6px 14px" ${cnt>1?"":"disabled"}>−</button><b>${cnt}개 연마</b><button class="sec" id="cP" style="flex:none;width:auto;padding:6px 14px" ${cnt<Math.min(10,room)?"":"disabled"}>+</button><button class="sec" id="cX" style="flex:none;width:auto;padding:6px 10px">최대</button></div><p style="margin:0 0 6px">소재를 골라 <b>소재 가치 ${need}</b>을 채우세요${c.gem?` · <b>보옥 ${cnt}개 이상 필요</b>`:""}. 같은 몬스터라도 부위마다 가치가 달라요.</p>
+   <div class="mbar"><i style="width:${Math.min(100,sum/need*100)}%"></i><b>${Math.floor(sum)} / ${need}</b></div>
    <div class="meldList">${L.map(([n,q])=>{const a=alloc[n]||0,i=matInfo(n);return `<div class="mrow${a?" on":""}">${matIcon(n,26)}<span class="mn"><b>${n}</b><small>${MKN[i.k]||""} · 가치 ${matVal(n)} · 보유 ${q}</small></span><span class="mq"><button data-md="${n}" ${a?"":"disabled"}>−</button><b>${a}</b><button data-mp="${n}" ${a<q?"":"disabled"}>+</button></span></div>`}).join("")||'<p class="hint">연마할 소재가 없어요.</p>'}</div>
    <div style="display:flex;gap:6px"><button class="sec" id="mAuto" style="flex:1">자동 채우기</button><button class="sec" id="mClr" style="flex:1">비우기</button></div>
-   <button id="mGo" ${ok?"":"disabled"}>${ok?"연마하기":gemOk?"소재 가치가 부족해요":"보옥을 넣어 주세요"}</button><button class="sec" id="oX">닫기</button>`);
+   <button id="mGo" ${ok?"":"disabled"}>${ok?(cnt>1?cnt+"개 연마하기":"연마하기"):gemOk?"소재 가치가 부족해요":"보옥을 넣어 주세요"}</button><button class="sec" id="oX">닫기</button>`);
   const nl=document.querySelector(".meldList");if(nl)nl.scrollTop=sc;
-  $("ovC").querySelectorAll("[data-mp]").forEach(b=>b.onclick=()=>{const n=b.dataset.mp;alloc[n]=(alloc[n]||0)+1;meldDialog(c,alloc)});
-  $("ovC").querySelectorAll("[data-md]").forEach(b=>b.onclick=()=>{const n=b.dataset.md;alloc[n]=Math.max(0,(alloc[n]||0)-1);if(!alloc[n])delete alloc[n];meldDialog(c,alloc)});
-  $("mClr").onclick=()=>meldDialog(c,{});
-  $("mAuto").onclick=()=>{const al={};let need=c.pt;if(c.gem){const g2=L.find(([n])=>isGem(n));if(g2){al[g2[0]]=1;need-=matVal(g2[0])}}
-    for(const[n,q]of [...L].filter(([n])=>!isGem(n)&&n!==MUTX).sort((x,y)=>y[1]-x[1])){if(need<=0)break;const v=matVal(n),k=Math.min(Math.max(0,q-2),Math.ceil(need/v));if(k>0){al[n]=k;need-=k*v}}meldDialog(c,al)};
+  $("ovC").querySelectorAll("[data-mp]").forEach(b=>b.onclick=()=>{const n=b.dataset.mp;alloc[n]=(alloc[n]||0)+1;meldDialog(c,alloc,cnt)});
+  $("ovC").querySelectorAll("[data-md]").forEach(b=>b.onclick=()=>{const n=b.dataset.md;alloc[n]=Math.max(0,(alloc[n]||0)-1);if(!alloc[n])delete alloc[n];meldDialog(c,alloc,cnt)});
+  $("mClr").onclick=()=>meldDialog(c,{},cnt);$("cM").onclick=()=>meldDialog(c,{},cnt-1);$("cP").onclick=()=>meldDialog(c,{},cnt+1);$("cX").onclick=()=>meldDialog(c,{},Math.min(10,room));
+  $("mAuto").onclick=()=>{const al={};let need=c.pt*cnt;if(c.gem){let gl=cnt;for(const[gn,gq]of L.filter(([n])=>isGem(n))){if(gl<=0)break;const k=Math.min(gq,gl);al[gn]=k;gl-=k;need-=k*matVal(gn)}}
+    for(const[n,q]of [...L].filter(([n])=>!isGem(n)&&n!==MUTX).sort((x,y)=>y[1]-x[1])){if(need<=0)break;const v=matVal(n),k=Math.min(Math.max(0,q-2),Math.ceil(need/v));if(k>0){al[n]=k;need-=k*v}}meldDialog(c,al,cnt)};
   $("oX").onclick=()=>$("ov").hidden=true;
-  $("mGo").onclick=()=>{if(!ok)return;Object.entries(alloc).forEach(([n,q])=>S.mats[n]=Math.max(0,(S.mats[n]||0)-q));const ch=genCharm(c.st);S.charms.push(ch);save();renderHub();meldAnim(c,ch)}}
+  $("mGo").onclick=()=>{if(!ok)return;Object.entries(alloc).forEach(([n,q])=>S.mats[n]=Math.max(0,(S.mats[n]||0)-q));const chs=[];for(let i=0;i<cnt;i++){const ch=genCharm(c.st);S.charms.push(ch);chs.push(ch)}save();renderHub();if(cnt===1)meldAnim(c,chs[0]);else meldAnimN(c,chs)}}
 function meldAnim(c,ch){const t=ctier(ch),col=CTC[t];sfx("click");
   overlay(`<h3 class="big">연마 중…</h3><div class="meldFx" style="--mc:${col}"><div class="stone"></div>${Array.from({length:12},(_,i)=>{const a=i/12*Math.PI*2;return `<i style="--dx:${Math.cos(a)*90}px;--dy:${Math.sin(a)*90}px;animation-delay:${(i%4)*.12}s"></i>`}).join("")}</div>`);
   setTimeout(()=>sfx("blunt",.7),450);setTimeout(()=>sfx("blunt",1),900);
   setTimeout(()=>{sfx(t>=3?"win":"craft");overlay(`<h3 class="big">연마 완료!</h3><div class="mRes" style="--mc:${col}"><div class="cgem"></div><p style="font-size:19px;margin:6px 0 2px;color:${col}"><b>${ch.name}</b></p><div class="mats">${Object.entries(ch.sk).map(([n,v])=>`<span class="mat">${n} +${v}</span>`).join("")}${ch.slots.length?`<span class="mat">슬롯 ${ch.slots.map(slotIcon).join("")}</span>`:""}</div></div><p class="hint">장비 탭의 호석 칸에서 장착·잠금할 수 있어요.</p><button id="oA">확인</button><button class="sec" id="oB">한 번 더 연마</button>`);
     $("oA").onclick=()=>$("ov").hidden=true;$("oB").onclick=()=>meldDialog(c)},1500)}
+function meldAnimN(c,chs){const best=chs.reduce((a,b)=>ctier(b)>ctier(a)?b:a),col=CTC[ctier(best)];sfx("click");
+  overlay(`<h3 class="big">${chs.length}개 연마 중…</h3><div class="meldFx" style="--mc:${col}"><div class="stone"></div>${Array.from({length:12},(_,i)=>{const a=i/12*Math.PI*2;return `<i style="--dx:${Math.cos(a)*90}px;--dy:${Math.sin(a)*90}px;animation-delay:${(i%4)*.12}s"></i>`}).join("")}</div>`);
+  setTimeout(()=>sfx("blunt",.7),450);setTimeout(()=>sfx("blunt",1),900);
+  setTimeout(()=>{sfx(ctier(best)>=3?"win":"craft");const srt=[...chs].sort((a,b)=>ctier(b)-ctier(a));overlay(`<h3 class="big">연마 완료! ${chs.length}개</h3><div class="meldList" style="max-height:42vh">${srt.map(ch=>`<div class="mrow"><span class="mn"><b style="color:${CTC[ctier(ch)]}">${ch.name}</b><small>${skStr(ch.sk)}${ch.slots.length?" · 슬롯 "+ch.slots.map(slotIcon).join(""):""}</small></span></div>`).join("")}</div><p class="hint">장비 탭의 호석 칸에서 장착·잠금할 수 있어요.</p><button id="oA">확인</button><button class="sec" id="oB">한 번 더 연마</button>`);
+    $("oA").onclick=()=>$("ov").hidden=true;$("oB").onclick=()=>meldDialog(c,{},chs.length)},1500)}
 function charmChooser(){
   let h=`<h3 class="big">호석</h3><p>${S.charms.length}/40개 보유 · 🔒 잠근 호석은 버릴 수 없어요</p>`;
   h+=`<button class="slot ${!S.eq.charm?"on":""}" data-c=""><span class="nm">없음</span></button>`;
@@ -3362,7 +3370,7 @@ function inShape(s){
   if(s.k==="sector")return Math.hypot(P.x-s.x,P.y-s.y)<s.r+PR*.5&&Math.abs(adiff(Math.atan2(P.y-s.y,P.x-s.x),s.a))<s.arc/2;
   if(s.k==="rect"){const dx=P.x-s.x,dy=P.y-s.y,c=Math.cos(s.a),sn=Math.sin(s.a),al=dx*c+dy*sn,pp=-dx*sn+dy*c;return al>0&&al<s.len&&Math.abs(pp)<s.w/2+PR}
 }
-const BRK={head:["bite","peck","breath","beam","fireball","fireball3","tongue","breath_sweep","beam_sweep","fireball_ring"],tail:["tailspin","sting"],leg:["stomp","quake","charge","bigpounce"],wing:["bigpounce","tornado","pounce"],mid:["tailspin","charge"]};
+const BRK={head:["bite","peck","slam","stab","breath","beam","fireball","fireball3","tongue","breath_sweep","beam_sweep","fireball_ring"],tail:["tailspin","sting","discharge"],leg:["stomp","quake","charge","bigpounce","leap"],wing:["bigpounce","tornado","pounce"],mid:["tailspin","charge","roll"]};
 const xPart=()=>["golem","quad","brute"].includes(M.d.shape)?"leg":M.d.shape==="manta"?"wing":"mid";
 function brkParts(){const r=[];if(M.hb)r.push("head");if(M.tb)r.push("tail");if(M.xb)r.push(xPart());return r}
 const brkHit=k=>brkParts().some(p=>BRK[p].includes(k));
@@ -3399,6 +3407,11 @@ function mStart(k,o){o=o||{};
     case "sting":M.ang=angTo(M,P);M.tg=[{k:"rect",x:M.x,y:M.y,a:M.ang,len:M.r+250,w:46,f:1}];break;
     case "tongue":{M.ang=angTo(M,P);const h=headPt();M.tg=[{k:"rect",x:h.x,y:h.y,a:M.ang,len:340,w:42,f:2}];break}
     case "gas":{M.tg=[{k:"circle",x:M.x,y:M.y,r:r+70,f:1}];for(let i=0;i<2;i++){const a=rand(0,6.28),d=rand(40,120);M.tg.push({k:"circle",x:clamp(P.x+Math.cos(a)*d,40,AW-40),y:clamp(P.y+Math.sin(a)*d,40,AH-40),r:70})}break}
+    case "leap":M.ang=angTo(M,P);M.tg=[{k:"circle",x:P.x,y:P.y,r:85}];break;
+    case "roll":M.ang=angTo(M,P);M.chLen=o.len||400;M.tg=[{k:"rect",x:M.x,y:M.y,a:M.ang,len:M.chLen,w:r*2.4,f:1}];break;
+    case "slam":{M.ang=angTo(M,P);const dd=r+95;M.tg=[{k:"circle",x:clamp(M.x+Math.cos(M.ang)*dd,40,AW-40),y:clamp(M.y+Math.sin(M.ang)*dd,40,AH-40),r:105}];break}
+    case "discharge":M.tg=[{k:"circle",x:M.x,y:M.y,r:r+170,f:1}];break;
+    case "stab":M.ang=angTo(M,P);M.tg=[{k:"rect",x:M.x,y:M.y,a:M.ang,len:r+220,w:r*1.1,f:1}];M.pk=0;break;
     case "peck":M.tg=[{k:"sector",x:M.x,y:M.y,a:M.ang,r:r+75,arc:1.3,f:1}];M.pk=0;break;
     case "web":{M.ang=angTo(M,P);M.tg=[{k:"circle",x:P.x,y:P.y,r:62}];for(let i=0;i<2;i++){const a=rand(0,6.28),d=rand(70,140);M.tg.push({k:"circle",x:clamp(P.x+Math.cos(a)*d,40,AW-40),y:clamp(P.y+Math.sin(a)*d,40,AH-40),r:62})}break}
     case "tornado":M.ang=angTo(M,P);M.tg=[-.55,0,.55].map(o=>({k:"circle",x:clamp(M.x+Math.cos(M.ang+o)*(r+60),40,AW-40),y:clamp(M.y+Math.sin(M.ang+o)*(r+60),40,AH-40),r:36}));break;
@@ -3408,7 +3421,7 @@ function mStart(k,o){o=o||{};
 }
 function brkShrink(){if(!M._brk||!M.tg)return;M.tg.forEach(t=>{if(t.r)t.r*=.78;if(t.len)t.len*=.75});M._brk=false}
 function mEnd(){if(M.seq&&M.seq.length&&M.state!=="dead"&&M.state!=="stagger"){const nx=M.seq.shift();mStart(nx.k,nx);return}M.seq=null;if(M.spcOn&&SPC[M.k]&&SPC[M.k].fx&&M.atk!=="roar"&&M.state!=="dead"){for(let i=0;i<3;i++){const a=rand(0,6.28),dd=rand(30,150);MBL.push({x:clamp(P.x+Math.cos(a)*dd,40,AW-40),y:clamp(P.y+Math.sin(a)*dd,40,AH-40),r:52,t:1,col:SPC[M.k].fx})}}
-  if(M.aff&&M.aff.includes("volatile")&&M.state!=="dead"){for(let i=0;i<2;i++){const a=rand(0,6.28),dd=rand(40,140);MBL.push({x:clamp(P.x+Math.cos(a)*dd,40,AW-40),y:clamp(P.y+Math.sin(a)*dd,40,AH-40),r:58,t:1.1})}}M.state="recover";M.t=ATT[M.atk].rec*(M.d.giant?1.3:1)*DIFF.rec*(M.wasSeq?1.3:1);M.wasSeq=false;M.tg=null;if(M.d.giant&&["quake","meteor","breath","beam","charge"].includes(M.atk)&&elapsed>=(M.core||0))M.core=elapsed+5}
+  if(M.aff&&M.aff.includes("volatile")&&M.state!=="dead"){for(let i=0;i<2;i++){const a=rand(0,6.28),dd=rand(40,140);MBL.push({x:clamp(P.x+Math.cos(a)*dd,40,AW-40),y:clamp(P.y+Math.sin(a)*dd,40,AH-40),r:58,t:1.1})}}M.state="recover";M.t=ATT[M.atk].rec*(M.d.giant?1.3:1)*DIFF.rec*(M.wasSeq?1.3:1);M.wasSeq=false;M.rt0=M.t;M.tg=null;if(M.d.giant&&["quake","meteor","breath","beam","charge"].includes(M.atk)&&elapsed>=(M.core||0))M.core=elapsed+5}
 function choose(d){
   if(M.forceRoar){M.forceRoar=false;mStart("roar");return true}
   const pool=M.d.moves.filter(k=>{const a=ATT[k];if(k==="roar")return false;return d<=a.max(M.r)&&d>=(a.min||0)});
@@ -3434,7 +3447,7 @@ function upMonster(dt){
     case "tele":{
       brkShrink();M.t-=dt*sp;const prog=1-M.t/M.t0;
       if(["swipe","stomp","tailspin","peck","bite"].includes(M.atk)&&prog<.5)M.ang=turnTo(M.ang,angTo(M,P),2.5*dt);
-      if(["charge","breath","beam","tongue","sting","breath_sweep","beam_sweep"].includes(M.atk)&&prog<.45&&!M.noTrack)M.ang=turnTo(M.ang,angTo(M,P),2*dt);
+      if(["charge","roll","stab","breath","beam","tongue","sting","breath_sweep","beam_sweep"].includes(M.atk)&&prog<.45&&!M.noTrack)M.ang=turnTo(M.ang,angTo(M,P),2*dt);
       if(M.atk==="burrow"&&prog<.65){M.tg[0].x=P.x;M.tg[0].y=P.y}
       M.tg.forEach(s=>{if(s.f===1){s.x=M.x;s.y=M.y;if(s.a!==undefined)s.a=M.ang}if(s.f===2){const h=headPt();s.x=h.x;s.y=h.y;s.a=M.ang}});
       if(M.t<=0){M.state="act";M.at=0;M.sx=M.x;M.sy=M.y;M.cd2=0;M.actTg=M.tg;M.tg=null;
@@ -3450,7 +3463,7 @@ function upMonster(dt){
         if(M.at>.5)mEnd()}
       else if(k==="tailspin"){M.ang+=dt*22;if(!M.hd){M.hd=true;hitTg(M.actTg,k);fx.push({k:"ring",x:M.x,y:M.y,r:M.r+80,l:.3})}if(M.at>.32)mEnd()}
       else if(k==="breath"||k==="beam"){if(!M.hd&&hitTg(M.actTg,k))M.hd=true;if(M.at>(k==="breath"?.55:.3))mEnd()}
-      else if(k==="charge"){const st=540*dt*sp;M.x+=Math.cos(M.ang)*st;M.y+=Math.sin(M.ang)*st;M.cd2+=st;
+      else if(k==="charge"||k==="roll"){const st=(k==="roll"?620:540)*dt*sp;M.x+=Math.cos(M.ang)*st;M.y+=Math.sin(M.ang)*st;M.cd2+=st;
         if(!M.hd&&dist(M,P)<M.r+PR+4){M.hd=true;hurtP(dmgOf(k),M.x,M.y,elOf(k))}
         if(A&&!M.hdA&&dist(M,A)<M.r+12){M.hdA=true;palHurt(dmgOf(k))}
         if(M.cd2>=(M.chLen||460)||M.x<M.r+20||M.x>AW-M.r-20||M.y<M.r+20||M.y>AH-M.r-20){M.x=clamp(M.x,M.r+20,AW-M.r-20);M.y=clamp(M.y,M.r+20,AH-M.r-20);shake=.12;mEnd()}}
@@ -3458,8 +3471,8 @@ function upMonster(dt){
         if(!M.hd&&inShape(rc)){M.hd=true;hurtP(dmgOf(k),M.x,M.y,elOf(k))}if(Math.random()<.6)fx.push({k:k==="beam_sweep"?"beam":"breath",x:h.x,y:h.y,a,len:rc.len,w:W2.w,col:M.d.el?ELC[M.d.el]:"#ddd",l:.12,L:.12});if(pr>=1)mEnd()}
       else if(k==="lightning_line"||k==="lightning_ring"){M.actTg.forEach((s2,i)=>MBL.push({x:s2.x,y:s2.y,r:s2.r,t:.08+i*.09,col:"#b4faff",dk:"lightning"}));mEnd()}
       else if(k==="fireball"||k==="fireball3"||k==="fireball_ring"){const h=headPt();M.actTg.forEach(s=>{const dd=Math.hypot(s.x-h.x,s.y-h.y);proj.push({x:h.x,y:h.y,sx:h.x,sy:h.y,tx:s.x,ty:s.y,t:0,T:Math.max(.25,dd/340),s,el:elOf(k),col:M.d.el?ELC[M.d.el]:M.d.shape==="brute"?"#a89a7a":"#ff9f1c"})});mEnd()}
-      else if(k==="pounce"||k==="bigpounce"){const s=M.actTg[0],T=k==="pounce"?.32:.45,p=Math.min(1,M.at/T);M.x=M.sx+(s.x-M.sx)*p;M.y=M.sy+(s.y-M.sy)*p;M.ang=Math.atan2(s.y-M.sy,s.x-M.sx);M.jump=Math.sin(p*Math.PI)*(k==="bigpounce"?.35:.15);
-        if(p>=1){M.jump=0;hitTg(M.actTg,k);fx.push({k:"ring",x:M.x,y:M.y,r:s.r,l:.3});shake=k==="bigpounce"?.3:.15;M.x=clamp(M.x,M.r+20,AW-M.r-20);M.y=clamp(M.y,M.r+20,AH-M.r-20);mEnd()}}
+      else if(k==="pounce"||k==="bigpounce"||k==="leap"){const s=M.actTg[0],T=k==="pounce"?.32:k==="leap"?.4:.45,p=Math.min(1,M.at/T);M.x=M.sx+(s.x-M.sx)*p;M.y=M.sy+(s.y-M.sy)*p;M.ang=Math.atan2(s.y-M.sy,s.x-M.sx);M.jump=Math.sin(p*Math.PI)*(k==="bigpounce"?.35:k==="leap"?.28:.15);
+        if(p>=1){M.jump=0;hitTg(M.actTg,k);fx.push({k:"ring",x:M.x,y:M.y,r:s.r,l:.3});shake=k==="bigpounce"?.3:k==="leap"?.22:.15;M.x=clamp(M.x,M.r+20,AW-M.r-20);M.y=clamp(M.y,M.r+20,AH-M.r-20);mEnd()}}
       else if(k==="spikes"){hitTg(M.actTg,k);M.actTg.forEach(s=>fx.push({k:"spike",x:s.x,y:s.y,r:s.r,l:.5,col:M.d.el?ELC[M.d.el]:"#9a8f74"}));shake=.15;mEnd()}
       else if(k==="lightning"){hitTg(M.actTg,k);M.actTg.forEach(s=>fx.push({k:"bolt",x:s.x,y:s.y,r:s.r,l:.3,col:"#b4faff"}));shake=.2;mEnd()}
       else if(k==="burrow"){if(!M.hd){M.hd=true;const s=M.actTg[0];M.x=clamp(s.x,M.r+20,AW-M.r-20);M.y=clamp(s.y,M.r+20,AH-M.r-20);M.under=false;M.ang=angTo(M,P);hitTg(M.actTg,k);fx.push({k:"ring",x:M.x,y:M.y,r:s.r,l:.35});fx.push({k:"spike",x:M.x,y:M.y,r:s.r,l:.5,col:"#7a6244"});shake=.3}if(M.at>.3)mEnd()}
@@ -3467,7 +3480,9 @@ function upMonster(dt){
       else if(k==="sting"){if(!M.hd&&M.at>.08&&hitTg(M.actTg,k))M.hd=true;if(M.at>.4)mEnd()}
       else if(k==="tongue"){if(!M.hd&&M.at>.08&&hitTg(M.actTg,k))M.hd=true;if(M.at>.35)mEnd()}
       else if(k==="gas"){hitTg(M.actTg,k);M.actTg.forEach(s=>gas.push({x:s.x,y:s.y,r:s.r,t:5,st:M.d.star}));mEnd()}
-      else if(k==="peck"){const n=Math.floor(M.at/.14);if(n>=M.pk&&M.pk<3){M.pk++;M.x+=Math.cos(M.ang)*12;M.y+=Math.sin(M.ang)*12;M.actTg[0].x=M.x;M.actTg[0].y=M.y;hitTg(M.actTg,k);fx.push({k:"arc",x:M.x,y:M.y,a:M.ang,r:M.r+40,l:.2})}if(M.at>.42)mEnd()}
+      else if(k==="peck"||k==="stab"){const n=Math.floor(M.at/.14);if(n>=M.pk&&M.pk<3){M.pk++;const sd=k==="stab"?26:12;M.x+=Math.cos(M.ang)*sd;M.y+=Math.sin(M.ang)*sd;M.actTg[0].x=M.x;M.actTg[0].y=M.y;hitTg(M.actTg,k);fx.push({k:"arc",x:M.x,y:M.y,a:M.ang,r:M.r+40,l:.2})}if(M.at>.42)mEnd()}
+      else if(k==="slam"){if(!M.hd){M.hd=true;const s=M.actTg[0];hitTg(M.actTg,k);fx.push({k:"ring",x:s.x,y:s.y,r:s.r,l:.35});fx.push({k:"boom",x:s.x,y:s.y,r:s.r*.8,l:.4,col:M.d.el?ELC[M.d.el]:"#ff8a3d"});shake=.3}if(M.at>.25)mEnd()}
+      else if(k==="discharge"){if(!M.hd){M.hd=true;hitTg(M.actTg,k);const R2=M.actTg[0].r;fx.push({k:"ring",x:M.x,y:M.y,r:R2,l:.4});for(let i=0;i<8;i++){const a=i*Math.PI/4;fx.push({k:"bolt",x:M.x+Math.cos(a)*R2*.8,y:M.y+Math.sin(a)*R2*.8,r:48,l:.3,col:"#b4faff"})}shake=.25}if(M.at>.5)mEnd()}
       else if(k==="web"){const can=P.inv<=0&&P.state!=="dead"&&M.actTg.some(inShape);hitTg(M.actTg,k);if(can&&P.state==="hurt")webbed();M.actTg.forEach(s=>webs.push({x:s.x,y:s.y,r:s.r,t:6,st:M.d.star}));mEnd()}
       else if(k==="tornado"){const col=M.d.el?ELC[M.d.el]:"#e6f7ff";M.actTg.forEach(s=>tors.push({x:s.x,y:s.y,a:angTo(s,P),t:3.4,r:34,hit:false,el:elOf(k),col}));mEnd()}
       else if(k==="meteor"){hitTg(M.actTg,k);M.actTg.forEach(s=>fx.push({k:"boom",x:s.x,y:s.y,r:s.r+8,l:.4,col:M.d.el?ELC[M.d.el]:"#9aa0a8"}));shake=.35;mEnd()}
@@ -3562,6 +3577,221 @@ function drawMorph(c,m,e){if(m.d.shape==="dummy")return;const d=m.d,r=m.r,[body,
 }
 function ellC(c,x,y,rx,ry,col){c.beginPath();c.ellipse(x,y,rx,ry,0,0,7);c.fillStyle=col;c.fill()}
 function ell(x,y,rx,ry,col){ellC(g,x,y,rx,ry,col)}
+/* ===== 골격 시스템 (조룡종 6종): 부위·관절 기반 렌더러 ===== */
+const RIG=(()=>{
+let g=null,SP=null,SKEL=null,EYE="#111",broken={};const WINGT="bird";
+const clamp=(v,a,b)=>Math.max(a,Math.min(b,v)),lerp=(a,b,k)=>a+(b-a)*k,ease=k=>k<.5?2*k*k:1-Math.pow(-2*k+2,2)/2;
+const EL={wind:{n:"풍",k:"wind",c:"#8ff0c8"},fire:{n:"염",k:"fire",c:"#ff7a2a"},fire2:{n:"염",k:"fire",c:"#ff4a1a"},thunder:{n:"뇌",k:"thunder",c:"#ffe14d"}};
+/* 펙코루 = 조룡종 기준 골격. 나머지는 비율·부리·볏·꼬리·무늬를 달리해 차별화 */
+const SPECIES={
+"펙코루 (탁조룡)":{cols:["#c98a4b","#8a5a2e","#7fd1ff"],elem:null,sc:1,neckL:1,neckT:1,headS:1,bodyW:1,legL:1,legT:1,wingL:1,wingW:1,tailLen:1,tailN:1,beak:"point",beakS:1,crest:"tuft3",mark:"belly",eyeS:1,shotS:1,pm:{peck:[1,1],gust:[1,1],kick:[1],tail:[1],dive:[1,1],elemshot:[1,1]},pt:"기준 범위 (모든 패턴 ×1)",mv:{tempo:1,stride:1,waddle:0,sway:1,tail:1,flap:1,breath:1},mt:"기준 동작",foot:{n:3,len:.16,w:.045,spread:.6,claw:0},ft:"세 갈래 발",desc:"기준 골격 · 균형 체형 · 뾰족한 부리 · 세 갈래 볏"},
+"시르페스 (풍조룡)":{cols:["#4f8f7a","#2c5547","#e8f7f0"],elem:EL.wind,sc:.95,neckL:1.3,neckT:.85,headS:.85,bodyW:.85,legL:1.2,legT:.75,wingL:1.25,wingW:.85,tailLen:1.5,tailN:.6,beak:"thin",beakS:1.2,crest:"plume",mark:"bands",eyeS:.9,shotS:.9,pm:{peck:[1.15,.8],gust:[1.3,1.15],kick:[.9],tail:[1.1],dive:[1.3,.8],elemshot:[1.3,.8]},pt:"넓은 돌풍 · 길고 좁은 쪼기·돌진·속성탄 · 차기는 짧음",mv:{tempo:1.35,stride:1.25,waddle:0,sway:1.5,tail:1.5,flap:1.8,breath:.8},mt:"가볍고 빠름 · 목과 꽁지가 크게 흔들리고 날개가 자주 떨려요",foot:{n:3,len:.26,w:.03,spread:.5,claw:0},ft:"길고 가는 발가락",desc:"날씬·긴 목·긴 다리 · 길고 좁은 날개 · 가는 부리 · 긴 꽁지깃"},
+"파이로스 (염조룡)":{cols:["#d4562a","#8c2f14","#ffd166"],elem:EL.fire,sc:1.05,neckL:.8,neckT:1.25,headS:1.1,bodyW:1.2,legL:.85,legT:1.25,wingL:.95,wingW:1.1,tailLen:.9,tailN:1.25,beak:"round",beakS:1.05,crest:"fan",mark:"spots",eyeS:1,shotS:1.1,pm:{peck:[.85,1.3],gust:[.9,1],kick:[1.2],tail:[.95],dive:[.9,1.3],elemshot:[.9,1.3]},pt:"짧고 넓은 쪼기 · 굵고 짧은 돌진·속성탄 · 차기 범위 큼",mv:{tempo:.9,stride:.85,waddle:1,sway:.8,tail:1,flap:1,breath:1.2},mt:"뒤뚱뒤뚱 걷는 땅딸보 · 보폭이 짧아요",foot:{n:3,len:.12,w:.07,spread:.8,claw:.06},ft:"짧고 굵은 발 · 작은 발톱",desc:"땅딸막·짧고 굵은 목 · 둥근 앵무 부리 · 부채꼴 볏 · 넓은 꽁지"},
+"인페르나 (극염조)":{cols:["#ff6a2b","#9c2a0c","#fff1a8"],elem:EL.fire2,sc:1.25,neckL:1,neckT:1.1,headS:1,bodyW:1.1,legL:1.1,legT:1.2,wingL:1.15,wingW:1.15,tailLen:1.35,tailN:1,beak:"hook",beakS:1.1,crest:"horn",mark:"bands",eyeS:.85,shotS:1.4,pm:{peck:[1.1,1],gust:[1.15,1.05],kick:[1.25],tail:[1.2],dive:[1.2,1.15],elemshot:[1.2,1.2]},pt:"전반적으로 넓음 · 차기와 꼬리 휩쓸기가 특히 큼",mv:{tempo:.85,stride:1.1,waddle:.3,sway:.7,tail:1.2,flap:1.3,breath:1.4},mt:"묵직하고 느림 · 숨을 크게 쉬고 날개를 크게 펄럭여요",foot:{n:3,len:.2,w:.055,spread:.55,claw:.1},ft:"큰 갈고리 발톱",desc:"대형 · 맹금류의 갈고리 부리 · 뒤로 휜 뿔 볏 · 튼튼한 다리 · 큰 날개"},
+"페르치온 (뇌조 두목)":{cols:["#3a4a6a","#1a2238","#ffe14d"],elem:EL.thunder,sc:1.4,neckL:.9,neckT:1.3,headS:1.15,bodyW:1.35,legL:1,legT:1.45,wingL:1.2,wingW:1.2,tailLen:1.2,tailN:1.15,beak:"heavy",beakS:1.15,crest:"crown",mark:"bolt",eyeS:.9,shotS:1.5,pm:{peck:[1.1,1.2],gust:[1.2,1.15],kick:[1.3],tail:[1.3],dive:[1.1,1.4],elemshot:[1.3,1.5]},pt:"모든 패턴 최대 범위 · 돌진과 속성탄이 아주 굵음",mv:{tempo:.7,stride:1.05,waddle:.5,sway:.5,tail:.8,flap:.6,breath:1.8},mt:"아주 느리고 육중함 · 목이 거의 안 흔들리고 가슴이 크게 부풀어요",foot:{n:4,len:.22,w:.07,spread:.8,claw:.11},ft:"발가락 4개 · 굵고 큰 발톱",desc:"초대형 두목 · 넓은 가슴 · 두껍고 큰 부리 · 왕관 볏 · 육중한 다리"},
+"피르코 (화린조)":{cols:["#9a6a44","#4e3420","#f0b070"],elem:EL.fire,sc:1,neckL:.8,neckT:1.1,headS:1.2,bodyW:1.15,legL:.8,legT:.95,wingL:.8,wingW:1.1,tailLen:.7,tailN:.8,beak:"point",beakS:.7,crest:"puff",mark:"spots",eyeS:1.5,shotS:.8,pm:{peck:[.9,1],gust:[.9,1],kick:[.9],tail:[.85],dive:[1,.9],elemshot:[.8,.8]},pt:"범위가 아담함 · 꼬리 휩쓸기와 속성탄이 짧음",mv:{tempo:1.3,stride:.8,waddle:.8,sway:1.8,tail:1.3,flap:1.4,breath:1},mt:"종종걸음 · 머리를 닭처럼 까딱여요",foot:{n:3,len:.1,w:.05,spread:.75,claw:0,pad:1},ft:"짧고 둥근 발바닥",desc:"펙코루급 · 큰 머리와 큰 눈 · 작고 짧은 부리 · 동글한 솜털 볏 · 짧은 꽁지"}};
+
+function mkSkel(s){return{neck:{base:[.62,0],segs:[.2,.18,.16].map(v=>v*s.neckL)},head:{len:.34*s.headS},wing:{shoulder:[.3,.4*s.bodyW],segs:[.42,.4,.36].map(v=>v*s.wingL)},pelvis:[-.46,0],leg:{hip:[-.56,.24*s.bodyW],segs:[.46*s.legL,.24*s.legL,.14*s.legL]},tail:{base:[-.68,0],segs:[.15,.12].map(v=>v*Math.max(.8,s.tailLen))}}}
+function basePose(){return{strR:0,strL:0,ox:0,oy:0,rot:0,lift:0,
+  neck:[0,0,0],head:0,
+  wingR:[.55,1.05,.75],wingL:[.55,1.05,.75],spreadR:.35,spreadL:.35,
+  legR:[Math.PI/2,0],legL:[Math.PI/2,0],
+  tail:[0,0,0,0],fan:.4,beak:0,chest:0,charge:0,shot:null,blades:null,fx:null,hot:[]}}
+const ANIMS={
+ idle:{n:"전투 대기 (위협)",loop:true,dur:2.4,uses:["wingL","wingR"],pose(p,t){const M=SP.mv,b=Math.sin(t*2.6),f=Math.sin(t*9)*.05*M.flap;p.neck=[-.12+b*.04*M.sway,-.1+b*.03*M.sway,.08-b*.05*M.sway];p.head=.1+b*.06*M.sway;p.ox=-.05;p.oy=b*.012*M.breath;p.tail=[b*.05,b*.06,b*.07,b*.08].map(v=>v*M.tail);p.fan=.75+b*.1;p.wingR[0]+=b*.04*M.breath+f;p.wingL[0]+=b*.04*M.breath-f;p.spreadR=p.spreadL=.4+b*.05*M.breath;p.beak=.25+.2*Math.max(0,b);p.chest=Math.max(0,b)*.25*M.breath}},
+ relax:{n:"평상시",loop:true,dur:2.4,uses:[],pose(p,t){const M=SP.mv,b=Math.sin(t*2.6);p.wingR=[2.55+b*.03*M.breath,-.9,-.5];p.wingL=[2.55+b*.03*M.breath,-.9,-.5];p.spreadR=p.spreadL=0;p.neck=[b*.05*M.sway,b*.04*M.sway,-b*.06*M.sway];p.head=b*.08*M.sway;p.tail=[b*.05,b*.06,b*.07,b*.08].map(v=>v*M.tail);p.fan=.4;p.chest=Math.max(0,b)*.2*M.breath}},
+ walk:{n:"걷기",loop:true,dur:1.2,uses:["legL","legR","pelvis"],pose(p,t){const M=SP.mv,w=Math.sin(t*Math.PI*2/1.2);p.legR=[Math.PI/2,0];p.legL=[Math.PI/2,0];p.strR=w*.32*M.stride;p.strL=-w*.32*M.stride;p.neck=[w*.08*M.sway,-w*.06*M.sway,w*.05*M.sway];p.head=-w*.08*M.sway;p.tail=[-w*.08,-w*.1,-w*.12,-w*.14].map(v=>v*M.tail);p.oy=w*.03*(1+M.waddle);p.rot=w*.06*M.waddle}},
+ peck:{n:"3연 쪼기",dur:1.6,uses:["head","neck"],tele:.45,act:.6,hit:["head"],tg:{t:"cone",x:.5,r:2.3,a:.5},range:"정면 근접",pose(p,t){
+   const a=this.tele,d=this.act,k=t<a?ease(t/a):t<a+d?((t-a)/d*3)%1:1-(t-a-d)/(this.dur-a-d);
+   if(t<a){p.neck=[-.35*k,-.4*k,.3*k];p.head=.4*k;p.ox=-.12*k}
+   else if(t<a+d){const s=Math.sin(k*Math.PI);p.neck=[-.35+.35*s,-.4+.4*s,.3-.3*s];p.head=.4-.5*s;p.ox=-.12+.42*s;p.beak=s;if(s>.5)p.hot=["head"]}
+   else{p.ox=.0;}}},
+ gust:{n:"날개 돌풍",dur:2.5,uses:["wingL","wingR","body"],tele:.7,act:1.05,hit:["wingL","wingR"],tg:{t:"cone",x:.3,r:2.9,a:.95},range:"전방 부채꼴 · 날개를 뒤로 당겼다 앞으로 미는 3회 반복",pose(p,t){
+   const a=this.tele,d=this.act,BK=[2.95,-.25,-.4],FW=[.25,.2,.05],B0=[.55,1.05,.75],mix=(u,v,k)=>u.map((x,i)=>lerp(x,v[i],k)),set=w=>{p.wingR=[...w];p.wingL=[...w]};
+   if(t<a){const k=ease(t/a);set(mix(B0,BK,k));p.ox=-.15*k;p.neck=[.1*k,.08*k,0];p.fan=.4+.4*k;p.chest=k*.5}
+   else if(t<a+d){const s=((t-a)/d*3)%1;
+     if(s<.55){const k=ease(s/.55);set(mix(FW,BK,k));p.ox=lerp(.1,-.15,k);p.chest=.5*k;p.fan=.8}
+     else{const k=ease((s-.55)/.45);set(mix(BK,FW,k));p.ox=lerp(-.15,.12,k);p.hot=["wingL","wingR"];p.fan=.9}}
+   else{const k=ease((t-a-d)/(this.dur-a-d));set(mix(FW,B0,k));p.ox=.12*(1-k);p.fan=lerp(.9,.4,k)}}},
+ kick:{n:"발톱 차기",dur:1.4,uses:["legR","pelvis"],tele:.5,act:.25,hit:["legR"],tg:{t:"circle",x:.3,y:.95,r:1},range:"오른쪽 앞 근접",pose(p,t){
+   const a=this.tele,d=this.act;
+   if(t<a){const k=ease(t/a);p.strR=-.25*k;p.legR=[Math.PI/2,0,-.35*k];p.rot=-.25*k;p.ox=-.1*k;p.wingR[0]+=.3*k;p.wingL[0]+=.3*k}
+   else if(t<a+d){const k=ease((t-a)/d);p.strR=lerp(-.25,.7,k);p.legR=[Math.PI/2,0,lerp(-.35,.7,k)];p.rot=lerp(-.25,.35,k);p.ox=-.1+.35*k;p.hot=["legR"];p.wingR[0]+=.3;p.wingL[0]+=.3}
+   else{const k=ease((t-a-d)/(this.dur-a-d));p.strR=.7*(1-k);p.legR=[Math.PI/2,0,.7*(1-k)];p.rot=.35*(1-k);p.ox=.25*(1-k)}}},
+ tail:{n:"꼬리 휩쓸기",dur:1.7,uses:["tail","pelvis"],tele:.55,act:.5,hit:["tail"],tg:{t:"circle",x:-.3,y:0,r:2.1},range:"원형 360°",pose(p,t){
+   const a=this.tele,d=this.act;
+   if(t<a){const k=ease(t/a);p.rot=.6*k;p.tail=[-.3*k,-.35*k,-.4*k,-.45*k];p.fan=.4+.4*k;p.strR=.12*k;p.strL=-.12*k}
+   else if(t<a+d){const k=(t-a)/d;p.rot=.6-Math.PI*2*ease(k);const lag=Math.sin(k*Math.PI);p.tail=[.35*lag,.45*lag,.55*lag,.65*lag];p.hot=["tail"];p.fan=.8;const ph=Math.sin(k*Math.PI*6)*.35;p.strR=ph;p.strL=-ph}
+   else{const k=ease((t-a-d)/(this.dur-a-d));p.rot=lerp(.6-Math.PI*2,-Math.PI*2,k);p.fan=lerp(.8,.4,k)}}},
+ dive:{n:"비행 돌진",dur:2.2,uses:["wingL","wingR","body","head"],tele:.8,act:.55,hit:["head","body"],tg:{t:"rect",x:.3,l:5.1,w:1.65},range:"직선 돌진",pose(p,t){
+   const a=this.tele,d=this.act,df=(1-.25*((broken.wingL?1:0)+(broken.wingR?1:0)))*SP.pm.dive[0];
+   if(t<a){const k=ease(t/a);p.spreadR=p.spreadL=k;p.lift=.35*k;p.ox=-.2*k;p.neck=[-.15*k,-.1*k,0];p.tail=[0,0,0,0];p.fan=.4+.6*k;p.strR=p.strL=-.1*k;const f=Math.sin(t*16)*.25*k;p.wingR=[lerp(.55,1.55+f,k),lerp(1.05,.4,k),lerp(.75,.3,k)];p.wingL=[...p.wingR]}
+   else if(t<a+d){const k=ease((t-a)/d);p.lift=.35-.2*k;p.ox=-.2+3.4*k*df;p.strR=p.strL=lerp(-.1,-.45,k);p.neck=[0,0,0];p.wingR=[lerp(1.55,2.4,k),.1,-.1];p.wingL=[...p.wingR];p.hot=["head","body"];p.fan=1}
+   else{const k=ease((t-a-d)/(this.dur-a-d));p.lift=.15*(1-k);p.ox=lerp(-.2+3.4*df,0,k);p.strR=p.strL=-.45*(1-k);p.wingR=[lerp(2.4,.55,k),lerp(.4,1.05,k),lerp(-.1,.75,k)];p.wingL=[...p.wingR];p.fan=lerp(1,.4,k)}}},
+ elemshot:{n:"속성탄 발사",dur:2.1,uses:["head","neck","body"],tele:.85,act:.22,hit:["head"],tg:{t:"rect",x:1.2,l:3.6,w:.5},range:"전방 직선 · 속성 피해 (속성 있는 몬스터만)",need:"elem",pose(p,t){
+   const a=this.tele,d=this.act,D=this.dur;
+   if(t<a){const k=ease(t/a);p.neck=[-.35*k,-.4*k,.3*k];p.head=.4*k;p.ox=-.12*k;p.beak=.4+.6*k;p.chest=k;p.charge=k;p.spreadR=p.spreadL=.3*k;p.wingR[0]+=.25*k;p.wingL[0]+=.25*k}
+   else if(t<a+d){const k=ease((t-a)/d);p.neck=[lerp(-.35,.12,k),lerp(-.4,.06,k),lerp(.3,-.12,k)];p.head=lerp(.4,-.12,k);p.ox=lerp(-.12,.22,k);p.beak=1;p.chest=1-k*.7;p.charge=1;p.hot=["head"];p.spreadR=p.spreadL=.3;p.wingR[0]+=.25;p.wingL[0]+=.25}
+   else{const k=ease((t-a-d)/(D-a-d));p.neck=[lerp(.12,0,k),lerp(.06,0,k),lerp(-.12,0,k)];p.head=lerp(-.12,0,k);p.ox=lerp(.22,0,k);p.beak=1-k;p.chest=.3*(1-k);p.wingR[0]+=.25*(1-k);p.wingL[0]+=.25*(1-k);p.shot={k:(t-a-d)/(D-a-d)}}}},
+ leap:{n:"도약 내려찍기",only:"펙코루 (탁조룡)",dur:2.1,uses:["legL","legR","pelvis","wingL","wingR"],tele:.6,act:.55,hit:["legL","legR"],tg:{t:"circle",x:2.1,y:0,r:1.3},range:"앞으로 뛰어올라 두 발로 착지 · 원형 (날개 파괴 시 도약 거리 감소)",pose(p,t){
+   const a=this.tele,d=this.act,D=this.dur,w=(broken.wingL?1:0)+(broken.wingR?1:0),df=1-.25*w;
+   if(t<a){const k=ease(t/a);p.strR=p.strL=-.15*k;p.ox=-.15*k;p.neck=[-.2*k,-.15*k,.1*k];p.wingR=[lerp(.55,1.3,k),lerp(1.05,.5,k),lerp(.75,.3,k)];p.wingL=[...p.wingR];p.spreadR=p.spreadL=.6*k}
+   else if(t<a+d){const k=(t-a)/d,e=ease(k);p.ox=lerp(-.15,2.1*df,e);p.lift=Math.sin(k*Math.PI)*.55;p.strR=p.strL=lerp(-.15,.3,e);p.wingR=[1.3+Math.sin(k*Math.PI*3)*.4,.5,.3];p.wingL=[...p.wingR];p.spreadR=p.spreadL=.9;if(k>.75)p.hot=["legL","legR"]}
+   else{const k=ease((t-a-d)/(D-a-d));p.ox=lerp(2.1*df,0,k);p.strR=p.strL=.3*(1-k);p.wingR=[lerp(1.3,.55,k),lerp(.5,1.05,k),lerp(.3,.75,k)];p.wingL=[...p.wingR];p.spreadR=p.spreadL=.9*(1-k)+.35*k;p.fx={t:"dust",k:(t-a-d)/.6}}}},
+ wbl:{n:"바람 칼날 부채",only:"시르페스 (풍조룡)",dur:2.4,uses:["wingL","wingR","body"],tele:.8,act:.3,hit:["wingL","wingR"],tg:{t:"cone",x:.9,r:4.2,a:.6},range:"날개를 휘둘러 전방 부채꼴로 풍 칼날 3개 발사 (날개 파괴 시 개수 감소)",pose(p,t){
+   const a=this.tele,d=this.act,D=this.dur,BK=[2.95,-.25,-.4],FW=[.25,.2,.05],B0=[.55,1.05,.75],mix=(u,v,k)=>u.map((x,i)=>lerp(x,v[i],k)),set=q=>{p.wingR=[...q];p.wingL=[...q]};
+   if(t<a){const k=ease(t/a);set(mix(B0,BK,k));p.spreadR=p.spreadL=.8*k;p.ox=-.15*k;p.neck=[.1*k,.08*k,0];p.chest=k*.6;p.fan=.4+.5*k}
+   else if(t<a+d){const k=ease((t-a)/d);set(mix(BK,FW,k));p.spreadR=p.spreadL=.8;p.ox=lerp(-.15,.15,k);p.hot=["wingL","wingR"];p.fan=.9;p.blades={k:0}}
+   else{const k=ease((t-a-d)/(D-a-d));set(mix(FW,B0,k));p.ox=.15*(1-k);p.fan=lerp(.9,.4,k);p.spreadR=p.spreadL=.8*(1-k)+.35*k;p.blades={k:(t-a-d)/(D-a-d)}}}},
+ roll:{n:"구르기 돌진",only:"파이로스 (염조룡)",dur:2.3,uses:["body","legL","legR","pelvis"],tele:.7,act:.75,hit:["body"],tg:{t:"rect",x:-.2,l:3.6,w:1.5},range:"몸을 말고 직선으로 굴러감 · 직선 띠",pose(p,t){
+   const a=this.tele,d=this.act,D=this.dur,F=[2.55,-.9,-.5];
+   if(t<a){const k=ease(t/a);p.strR=p.strL=-.15*k;p.ox=-.2*k;p.wingR=[lerp(.55,2.55,k),lerp(1.05,-.9,k),lerp(.75,-.5,k)];p.wingL=[...p.wingR];p.spreadR=p.spreadL=.35*(1-k);p.neck=[-.3*k,-.2*k,.1*k];p.head=.3*k;p.rot=Math.sin(t*30)*.05*k}
+   else if(t<a+d){const k=(t-a)/d,e=ease(k);p.ox=lerp(-.2,2.7,e);p.rot=-k*Math.PI*2*3;p.wingR=[...F];p.wingL=[...F];p.spreadR=p.spreadL=0;p.neck=[-.3,-.2,.1];p.head=.3;p.hot=["body"];p.strR=Math.sin(k*40)*.3;p.strL=-p.strR}
+   else{const k=ease((t-a-d)/(D-a-d));p.ox=lerp(2.7,0,k);p.rot=Math.sin(k*9)*.12*(1-k);p.wingR=[lerp(2.55,.55,k),lerp(-.9,1.05,k),lerp(-.5,.75,k)];p.wingL=[...p.wingR];p.spreadR=p.spreadL=.35*k;p.neck=[-.3*(1-k),-.2*(1-k),.1*(1-k)];p.head=.3*(1-k)}}},
+ slam:{n:"화염 내려찍기",only:"인페르나 (극염조)",dur:2.4,uses:["head","neck","body"],tele:.9,act:.25,hit:["head"],tg:{t:"circle",x:2.1,y:0,r:1.6},range:"머리를 치켜들었다 내려찍고 바닥에 불길 파문 · 원형",pose(p,t){
+   const a=this.tele,d=this.act,D=this.dur;
+   if(t<a){const k=ease(t/a);p.neck=[-.5*k,-.45*k,.25*k];p.head=.6*k;p.ox=-.2*k;p.beak=.3+.7*k;p.chest=k;p.spreadR=p.spreadL=.7*k;p.wingR=[lerp(.55,1.3,k),lerp(1.05,.5,k),lerp(.75,.4,k)];p.wingL=[...p.wingR]}
+   else if(t<a+d){const k=ease((t-a)/d);p.neck=[lerp(-.5,.25,k),lerp(-.45,.2,k),lerp(.25,-.1,k)];p.head=lerp(.6,-.5,k);p.ox=lerp(-.2,.35,k);p.beak=1-k*.5;p.chest=1-k;p.hot=["head"];p.spreadR=p.spreadL=.7;p.wingR=[1.3,.5,.4];p.wingL=[...p.wingR]}
+   else{const k=ease((t-a-d)/(D-a-d));p.neck=[lerp(.25,0,k),lerp(.2,0,k),lerp(-.1,0,k)];p.head=lerp(-.5,0,k);p.ox=lerp(.35,0,k);p.beak=.5*(1-k);p.spreadR=p.spreadL=.7*(1-k)+.35*k;p.wingR=[lerp(1.3,.55,k),lerp(.5,1.05,k),lerp(.4,.75,k)];p.wingL=[...p.wingR];p.fx={t:"ring",k:(t-a-d)/.7}}}},
+ discharge:{n:"뇌전 방전",only:"페르치온 (뇌조 두목)",dur:2.7,uses:["tail","pelvis","body"],tele:1,act:.5,hit:["tail"],tg:{t:"circle",x:0,y:0,r:2.6},range:"꼬리깃에 전기를 모아 주변 360° 방전 (꼬리 절단 시 범위 감소)",pose(p,t){
+   const a=this.tele,d=this.act,D=this.dur;
+   if(t<a){const k=ease(t/a);p.fan=.4+.6*k;p.tail=[-.3*k,-.4*k,-.5*k,-.6*k];p.rot=Math.sin(t*45)*.04*k;p.ox=-.1*k;p.chest=.5*k;p.spreadR=p.spreadL=.5*k;p.strR=p.strL=-.1*k}
+   else if(t<a+d){const k=(t-a)/d;p.fan=1;p.tail=[.3,.4,.5,.6];p.hot=["tail"];p.spreadR=p.spreadL=.7;p.rot=Math.sin(t*60)*.05;p.fx={t:"bolt",k:ease(k)}}
+   else{const k=ease((t-a-d)/(D-a-d));p.fan=lerp(1,.4,k);p.tail=[.3*(1-k),.4*(1-k),.5*(1-k),.6*(1-k)];p.spreadR=p.spreadL=.7*(1-k)+.35*k;p.fx={t:"bolt",k:1,fade:(t-a-d)/(D-a-d)}}}},
+ stab:{n:"종종 찌르기",only:"피르코 (화린조)",dur:2.2,uses:["head","neck","legL","legR"],tele:.5,act:1,hit:["head"],tg:{t:"rect",x:.4,l:3.2,w:.8},range:"짧게 세 번 달려들며 찌르기 · 직선 띠 (부리 파괴 시 거리 감소)",pose(p,t){
+   const a=this.tele,d=this.act,D=this.dur;
+   if(t<a){const k=ease(t/a);p.neck=[-.3*k,-.35*k,.25*k];p.head=.3*k;p.ox=-.15*k;p.strR=p.strL=-.15*k}
+   else if(t<a+d){const k=(t-a)/d,s2=(k*3)%1,th=Math.sin(s2*Math.PI);p.neck=[-.3+.3*th,-.35+.35*th,.25-.25*th];p.head=.3-.45*th;p.ox=-.15+k*1+.9*th;p.beak=th;p.strR=Math.sin(s2*Math.PI*2)*.4;p.strL=-p.strR;if(th>.6)p.hot=["head"]}
+   else{const k=ease((t-a-d)/(D-a-d));p.ox=lerp(.85,0,k);p.neck=[0,0,0];p.head=lerp(-.15,0,k)}}},
+ roar:{n:"포효",dur:1.8,uses:["head","neck","wingL","wingR"],tele:.4,act:.9,hit:[],range:"주변 경직 (피해 없음)",pose(p,t){
+   const a=this.tele,d=this.act,k=t<a?ease(t/a):t<a+d?1:1-ease((t-a-d)/(this.dur-a-d));
+   p.neck=[.0,.0,0];p.head=0;p.beak=k;p.spreadR=p.spreadL=k*.8;const sh=t>a&&t<a+d?Math.sin(t*40)*.03:0;p.ox=sh;
+   p.wingR=[lerp(.55,.4,k),lerp(1.05,1.2,k),lerp(.75,.85,k)];p.wingL=[...p.wingR];p.fan=.4+.6*k}}};
+
+function solve(p,R){
+  const J={},pt=(x,y)=>({x:x*R,y:y*R});
+  J.body=pt(0,0);J.pelvis=pt(SKEL.pelvis[0],SKEL.pelvis[1]);
+  // 목
+  let x=SKEL.neck.base[0]*R,y=0,a=0;J.neck=[{x,y}];
+  SKEL.neck.segs.forEach((L,i)=>{a+=p.neck[i];x+=Math.cos(a)*L*R;y+=Math.sin(a)*L*R;J.neck.push({x,y})});
+  a+=p.head;J.headA=a;J.head={x:x+Math.cos(a)*SKEL.head.len*.55*R,y:y+Math.sin(a)*SKEL.head.len*.55*R};{const bl=(.18+(broken.head?.38:.55)*SP.beakS)*SP.headS*R;J.beakTip={x:J.head.x+Math.cos(a)*bl,y:J.head.y+Math.sin(a)*bl}};
+  // 날개 (오른쪽 기준으로 풀고 왼쪽은 y 반전)
+  for(const side of ["R","L"]){const s=side==="R"?1:-1,ang=p["wing"+side],sp=p["spread"+side]||0;
+    let wx=SKEL.wing.shoulder[0]*R,wy=SKEL.wing.shoulder[1]*R,wa=ang[0];const ch=[{x:wx,y:s*wy}];
+    SKEL.wing.segs.forEach((L,i)=>{if(i>0)wa+=ang[i];const len=L*R*(1+sp*.25)*(WINGT==="ptero"&&i===2?1.9:1);wx+=Math.cos(wa)*len;wy+=Math.sin(wa)*len;ch.push({x:wx,y:s*wy})});
+    J["wing"+side]=ch}
+  // 다리
+  for(const side of ["R","L"]){const s=side==="R"?1:-1,ang=p["leg"+side];let lx=SKEL.leg.hip[0]*R,ly=SKEL.leg.hip[1]*R,la=ang[0]-Math.PI/2+.42;const st=(p["str"+side]||0)*R,ch=[{x:lx,y:s*ly}];
+    SKEL.leg.segs.forEach((L,i)=>{if(i>0)la+=(ang[i]||0);lx+=Math.cos(la)*L*R+st*(i?.6:.4);ly+=Math.sin(la)*L*R;ch.push({x:lx,y:s*ly})});J["leg"+side]=ch}
+  // 꼬리
+  let tx=SKEL.tail.base[0]*R,ty=0,ta=Math.PI;J.tail=[{x:tx,y:ty}];
+  const nSeg=broken.tail?1:2;SKEL.tail.segs.slice(0,nSeg).forEach((L,i)=>{ta+=p.tail[i];tx+=Math.cos(ta)*L*R;ty+=Math.sin(ta)*L*R;J.tail.push({x:tx,y:ty})});J.tailA=ta;
+  return J}
+function feather(px,py,dx,dy,len,w,col){g.fillStyle=col;g.beginPath();g.moveTo(px-dy*w*.6,py+dx*w*.6);g.quadraticCurveTo(px+dx*len*.55-dy*w*1.3,py+dy*len*.55+dx*w*1.3,px+dx*len,py+dy*len);g.quadraticCurveTo(px+dx*len*.55+dy*w*1.3,py+dy*len*.55-dx*w*1.3,px+dy*w*.6,py-dx*w*.6);g.closePath();g.fill();g.strokeStyle="rgba(0,0,0,.22)";g.lineWidth=1;g.stroke()}
+function ell(x,y,rx,ry,col,a){g.beginPath();g.ellipse(x,y,rx,ry,a||0,0,Math.PI*2);g.fillStyle=col;g.fill()}
+function drawBeak(st,bl,op,R,col){g.fillStyle=col;g.strokeStyle="rgba(0,0,0,.3)";g.lineWidth=1.2;const x0=R*.18,P=(f)=>{g.beginPath();f();g.closePath();g.fill();g.stroke()};
+  if(st==="thin"){bl*=1.25;P(()=>{g.moveTo(x0,-R*.05-op*.6);g.lineTo(x0+bl,-op*.3);g.lineTo(x0,0)});P(()=>{g.moveTo(x0,R*.05+op*.6);g.lineTo(x0+bl*.9,op*.3);g.lineTo(x0,0)})}
+  else if(st==="round"){bl*=.8;P(()=>{g.moveTo(x0,-R*.14-op);g.bezierCurveTo(x0+bl*.5,-R*.2-op,x0+bl*1.05,-R*.1-op*.6,x0+bl,0);g.lineTo(x0,0)});P(()=>{g.moveTo(x0,R*.1+op);g.bezierCurveTo(x0+bl*.45,R*.13+op,x0+bl*.8,R*.08+op*.5,x0+bl*.78,0);g.lineTo(x0,0)})}
+  else if(st==="hook"){P(()=>{g.moveTo(x0,-R*.1-op);g.quadraticCurveTo(x0+bl*.7,-R*.13-op,x0+bl,R*.09-op*.3);g.quadraticCurveTo(x0+bl*.8,-R*.01-op*.2,x0+bl*.45,0);g.lineTo(x0,0)});P(()=>{g.moveTo(x0,R*.07+op);g.lineTo(x0+bl*.55,op*.4);g.lineTo(x0,0)})}
+  else if(st==="heavy"){P(()=>{g.moveTo(x0,-R*.16-op);g.quadraticCurveTo(x0+bl*.6,-R*.15-op,x0+bl*1.05,-op*.2);g.lineTo(x0,0)});P(()=>{g.moveTo(x0,R*.14+op);g.quadraticCurveTo(x0+bl*.5,R*.12+op,x0+bl*.9,op*.3);g.lineTo(x0,0)})}
+  else{P(()=>{g.moveTo(x0,-R*.08-op);g.lineTo(x0+bl,-op*.5);g.lineTo(x0,0)});P(()=>{g.moveTo(x0,R*.08+op);g.lineTo(x0+bl*.85,op*.5);g.lineTo(x0,0)})}}
+function drawCrest(st,R,c0,c1,c2){
+  if(st==="plume"){feather(-R*.05,-R*.02,-.95,-.31,R*.75,R*.1,c2);feather(-R*.05,R*.03,-.92,.2,R*.5,R*.08,c1);feather(-R*.05,0,-1,0,R*.38,R*.07,c2)}
+  else if(st==="fan"){for(let i=-2;i<=2;i++){const a=Math.PI+i*.38;feather(-R*.05,i*R*.03,Math.cos(a),Math.sin(a),R*(.45-Math.abs(i)*.06),R*.12,i%2?c1:c2)}}
+  else if(st==="horn"){g.fillStyle=c1;g.strokeStyle="rgba(0,0,0,.3)";g.lineWidth=1.2;for(const sg of[-1,1]){g.beginPath();g.moveTo(R*.02,sg*R*.05);g.quadraticCurveTo(-R*.3,sg*R*.05,-R*.62,sg*R*.36);g.quadraticCurveTo(-R*.3,sg*R*.24,-R*.1,sg*R*.2);g.closePath();g.fill();g.stroke()}feather(-R*.05,0,-1,0,R*.3,R*.06,c2)}
+  else if(st==="crown"){for(let i=-3;i<=3;i++){const a=Math.PI+i*.3;feather(-R*.05,i*R*.025,Math.cos(a),Math.sin(a),R*(.62-Math.abs(i)*.07),R*.09,i%2?c1:c2)}}
+  else if(st==="puff"){ell(-R*.14,0,R*.13,R*.12,c2);ell(-R*.24,-R*.07,R*.08,R*.08,c0);ell(-R*.24,R*.07,R*.08,R*.08,c0);ell(-R*.3,0,R*.06,R*.06,c1)}
+  else{g.fillStyle=c2;for(let i=-1;i<=1;i++){g.beginPath();g.moveTo(-R*.05,i*R*.08-R*.03);g.lineTo(-R*.42,i*R*.2);g.lineTo(-R*.05,i*R*.08+R*.03);g.fill()}}}
+function drawMark(st,R,bw,c1,c2){g.save();g.fillStyle=c2;g.strokeStyle=c2;
+  if(st==="belly"){g.globalAlpha=.55;g.beginPath();g.moveTo(R*.62,0);g.quadraticCurveTo(R*.4,-R*.22*bw,R*.05,-R*.08*bw);g.lineTo(R*.05,R*.08*bw);g.quadraticCurveTo(R*.4,R*.22*bw,R*.62,0);g.fill()}
+  else if(st==="bands"){g.globalAlpha=.6;g.lineWidth=R*.05;for(let i=0;i<3;i++){const x=R*(.55-i*.2);g.beginPath();g.moveTo(x,-R*.3*bw);g.quadraticCurveTo(x-R*.08,0,x,R*.3*bw);g.stroke()}}
+  else if(st==="spots"){g.globalAlpha=.6;for(const q of[[.55,-.12],[.5,.14],[.35,0],[.2,-.18],[.15,.16],[.02,0]]){g.beginPath();g.arc(q[0]*R,q[1]*R*bw,R*.045,0,7);g.fill()}}
+  else if(st==="bolt"){g.globalAlpha=.85;g.lineWidth=R*.045;g.lineJoin="miter";g.beginPath();[[.68,0],[.5,-.14],[.36,.1],[.2,-.14],[.04,.1],[-.12,-.06]].forEach((q,i)=>i?g.lineTo(q[0]*R,q[1]*R*bw):g.moveTo(q[0]*R,q[1]*R*bw));g.stroke()}
+  g.restore()}
+function drawBird(p,J,R,cols,hot){const[c0,c1,c2]=cols;
+  // 꼬리 (짧고 풍성한 깃)
+  const tl=J.tail,te=tl[tl.length-1];
+  for(let i=tl.length-1;i>=1;i--)ell(tl[i].x,tl[i].y,R*(.17-i*.02),R*(.15-i*.02),i%2?c0:c1);
+  if(!broken.tail){const sp=.13+p.fan*.09,TL=SP.tailLen,TN=SP.tailN,n1=Math.round(13*TN),n2=Math.round(9*TN),n3=Math.max(3,Math.round(5*TN));
+    for(let i=0;i<n1;i++){const a=J.tailA+(i-(n1-1)/2)*(12*sp*.9/(n1-1)),L=TL*R*(.5+((i*37)%7)*.025);feather(te.x,te.y,Math.cos(a),Math.sin(a),L,R*.1,c1)}
+    for(let i=0;i<n2;i++){const a=J.tailA+(i-(n2-1)/2)*(8*sp/(n2-1)),L=TL*R*(.4+((i*53)%5)*.03);feather(te.x,te.y,Math.cos(a),Math.sin(a),L,R*.085,i%3===1?c2:c0)}
+    for(let i=0;i<n3;i++){const a=J.tailA+(i-(n3-1)/2)*(3.2*sp/(n3-1));feather(te.x,te.y,Math.cos(a),Math.sin(a),R*.24*TL,R*.07,c0)}}
+  else ell(te.x,te.y,R*.09,R*.09,"#7a2a2a");
+  {const pv=J.pelvis;ell(pv.x,pv.y,R*.3,R*.32*SP.bodyW,c1);ell(pv.x+R*.03,pv.y,R*.22,R*.24*SP.bodyW,c0)}
+  // 다리: 허벅지 → 정강이 → 발목 관절 → 발(발가락·발톱)
+  for(const s of ["L","R"]){const lg=J["leg"+s],br=broken["leg"+s],lc=br?"#5a4a3a":c1,lt=SP.legT,F=SP.foot;
+    const ta=Math.atan2(lg[1].y-lg[0].y,lg[1].x-lg[0].x),tl=Math.hypot(lg[1].x-lg[0].x,lg[1].y-lg[0].y);
+    g.save();g.translate(lg[0].x,lg[0].y);g.rotate(ta);g.fillStyle=br?"#6a5040":c0;g.beginPath();g.moveTo(-R*.04,-R*.12*lt);g.quadraticCurveTo(tl*.4,-R*.165*lt,tl,-R*.055*lt);g.lineTo(tl,R*.055*lt);g.quadraticCurveTo(tl*.4,R*.165*lt,-R*.04,R*.12*lt);g.closePath();g.fill();
+    g.strokeStyle=c1;g.lineWidth=2;g.stroke();g.fillStyle=c1;g.beginPath();g.ellipse(tl*.45,0,tl*.34,R*.045*lt,0,0,Math.PI*2);g.globalAlpha=.35;g.fill();g.globalAlpha=1;g.restore();
+    g.strokeStyle=lc;g.lineCap="round";g.lineJoin="round";g.lineWidth=R*.08*lt;g.beginPath();g.moveTo(lg[1].x,lg[1].y);g.lineTo(lg[2].x,lg[2].y);g.stroke();
+    g.lineWidth=R*.06*lt;g.beginPath();g.moveTo(lg[2].x,lg[2].y);g.lineTo(lg[3].x,lg[3].y);g.stroke();
+    ell(lg[2].x,lg[2].y,R*.055*lt,R*.055*lt,c0);ell(lg[1].x,lg[1].y,R*.06*lt,R*.06*lt,c0);
+    const fa=Math.atan2(lg[3].y-lg[2].y,lg[3].x-lg[2].x),n=F.n;g.lineWidth=R*F.w;
+    for(let j=0;j<n;j++){const o=(j-(n-1)/2)*(2*F.spread/(n-1)),aa=fa+o,tx=lg[3].x+Math.cos(aa)*R*F.len,ty=lg[3].y+Math.sin(aa)*R*F.len;
+      g.strokeStyle=lc;g.beginPath();g.moveTo(lg[3].x,lg[3].y);g.lineTo(tx,ty);g.stroke();
+      if(F.claw>0){g.fillStyle=c2;g.beginPath();g.moveTo(tx+Math.cos(aa+1.57)*R*F.w*.6,ty+Math.sin(aa+1.57)*R*F.w*.6);g.lineTo(tx+Math.cos(aa+.25)*R*F.claw+Math.cos(aa)*0,ty+Math.sin(aa+.25)*R*F.claw);g.lineTo(tx+Math.cos(aa-1.57)*R*F.w*.6,ty+Math.sin(aa-1.57)*R*F.w*.6);g.closePath();g.fill()}
+      if(F.pad){ell(tx,ty,R*F.w*.8,R*F.w*.8,c2)}}
+    if(n>=4){const ba=fa+Math.PI;g.strokeStyle=lc;g.lineWidth=R*F.w*.8;g.beginPath();g.moveTo(lg[3].x,lg[3].y);g.lineTo(lg[3].x+Math.cos(ba)*R*F.len*.5,lg[3].y+Math.sin(ba)*R*F.len*.5);g.stroke()}}
+  // 날개
+  for(const s of ["L","R"]){const ch=J["wing"+s],br=broken["wing"+s];
+    if(WINGT==="ptero"){const hip=J["leg"+s][0],mx=(ch[3].x+hip.x)/2,my=(ch[3].y+hip.y)/2;
+      g.fillStyle=c1;g.globalAlpha=.9;g.beginPath();g.moveTo(ch[0].x,ch[0].y);g.lineTo(ch[1].x,ch[1].y);g.lineTo(ch[2].x,ch[2].y);g.lineTo(ch[3].x,ch[3].y);
+      if(br){g.lineTo(mx*.85+ch[3].x*.15,my*.85+ch[3].y*.15);g.lineTo(mx*.7,my*.7);g.lineTo(mx*.8,my*.8)}
+      g.quadraticCurveTo(mx*.55,my*.55,hip.x,hip.y);g.closePath();g.fill();g.globalAlpha=1;
+      g.strokeStyle=c0;g.globalAlpha=.45;g.lineWidth=1.5;for(let v=1;v<=3;v++){const k=v/4;g.beginPath();g.moveTo(ch[2].x,ch[2].y);g.lineTo(lerp(ch[3].x,hip.x,k)*.9,lerp(ch[3].y,hip.y,k)*.9);g.stroke()}g.globalAlpha=1;
+      g.strokeStyle=c0;g.lineWidth=R*.07;g.lineCap="round";g.beginPath();g.moveTo(ch[0].x,ch[0].y);g.lineTo(ch[1].x,ch[1].y);g.lineTo(ch[2].x,ch[2].y);g.stroke();g.lineWidth=R*.035;g.beginPath();g.moveTo(ch[2].x,ch[2].y);g.lineTo(ch[3].x,ch[3].y);g.stroke();
+      const fa=Math.atan2(ch[2].y-ch[1].y,ch[2].x-ch[1].x);g.fillStyle=c2;for(const o of[-.9,-.5]){const ox=ch[2].x+Math.cos(fa+o)*R*.14,oy=ch[2].y+Math.sin(fa+o)*R*.14;g.beginPath();g.moveTo(ch[2].x,ch[2].y);g.lineTo(ox,oy);g.lineTo(ch[2].x+Math.cos(fa)*R*.04,ch[2].y+Math.sin(fa)*R*.04);g.fill()}
+    }else{const back=(a,b,k)=>{const dx=b.x-a.x,dy=b.y-a.y,L=Math.hypot(dx,dy)||1;let nx=-dy/L,ny=dx/L;if(nx>0){nx=-nx;ny=-ny}const bx=nx*(1-k)-k,by=ny*(1-k),l2=Math.hypot(bx,by)||1;return[bx/l2,by/l2]};
+      const nP=br?3:6;for(let f=0;f<nP;f++){const k=f/(nP-1),px=lerp(ch[2].x,ch[3].x,k),py=lerp(ch[2].y,ch[3].y,k);const[bx,by]=back(ch[2],ch[3],.25);const ux=(ch[3].x-ch[2].x),uy=(ch[3].y-ch[2].y),ul=Math.hypot(ux,uy)||1,m=k*.8;let dx=bx*(1-m)+ux/ul*m,dy=by*(1-m)+uy/ul*m;const dl=Math.hypot(dx,dy);
+        feather(px,py,dx/dl,dy/dl,R*SP.wingL*(.72+.55*k)*(br&&f%2?.55:1),R*.13*SP.wingW,f%2?c0:c2)}
+      for(let f=0;f<4;f++){const k=f/3,px=lerp(ch[1].x,ch[2].x,k),py=lerp(ch[1].y,ch[2].y,k);const[bx,by]=back(ch[1],ch[2],.3);feather(px,py,bx,by,R*SP.wingL*(br&&f%2?.35:.66),R*.13*SP.wingW,f%2?c1:c0)}
+      for(let f=0;f<3;f++){const k=f/2,px=lerp(ch[0].x,ch[1].x,k),py=lerp(ch[0].y,ch[1].y,k);const[bx,by]=back(ch[0],ch[1],.45);feather(px,py,bx,by,R*.46*SP.wingL,R*.13*SP.wingW,c1)}
+      g.strokeStyle=c0;g.lineWidth=R*.16;g.lineCap="round";g.lineJoin="round";g.beginPath();g.moveTo(ch[0].x,ch[0].y);g.lineTo(ch[1].x,ch[1].y);g.lineTo(ch[2].x,ch[2].y);g.stroke();
+      g.strokeStyle=c1;g.lineWidth=R*.07;g.beginPath();g.moveTo(ch[0].x,ch[0].y);g.lineTo(ch[1].x,ch[1].y);g.lineTo(ch[2].x,ch[2].y);g.lineTo(lerp(ch[2].x,ch[3].x,.5),lerp(ch[2].y,ch[3].y,.5));g.stroke()}}
+  // 몸통
+  const bw=SP.bodyW;g.save();g.translate(R*.3,0);g.scale(1+p.chest*.04,1+p.chest*.1);g.translate(-R*.3,0);
+  g.fillStyle=c0;g.beginPath();g.moveTo(R*.78,0);g.quadraticCurveTo(R*.75,-R*.35*bw,R*.42,-R*.37*bw);g.quadraticCurveTo(R*.05,-R*.31*bw,-R*.3,-R*.14*bw);g.quadraticCurveTo(-R*.38,0,-R*.3,R*.14*bw);g.quadraticCurveTo(R*.05,R*.31*bw,R*.42,R*.37*bw);g.quadraticCurveTo(R*.75,R*.35*bw,R*.78,0);g.closePath();g.fill();
+  g.strokeStyle=c1;g.lineWidth=2;g.stroke();
+  drawMark(SP.mark,R,bw,c1,c2);g.restore();
+  if(broken.body){g.strokeStyle="#7a2a2a";g.lineWidth=3;g.beginPath();g.moveTo(-R*.4,-R*.2);g.lineTo(-R*.1,0);g.lineTo(-R*.35,R*.2);g.stroke()}
+  // 목
+  const nk=J.neck;for(let i=0;i<nk.length;i++)ell(nk[i].x,nk[i].y,R*(.24-i*.025)*SP.neckT,R*(.2-i*.02)*SP.neckT,i%2?c1:c0);
+  // 머리
+  const h=J.head,ha=J.headA;g.save();g.translate(h.x,h.y);g.rotate(ha);g.scale(SP.headS,SP.headS);
+  ell(0,0,R*.3,R*.24,c0);
+  const bl=(broken.head?.38:.55)*R*SP.beakS,op=p.beak*.12*R;
+  drawBeak(SP.beak,bl,op,R,c2);
+  if(!broken.head)drawCrest(SP.crest,R,c0,c1,c2);
+  else{g.strokeStyle="#7a2a2a";g.lineWidth=2;g.beginPath();g.moveTo(R*.4,-R*.05);g.lineTo(R*.48,R*.05);g.stroke()}
+  ell(R*.1,-R*.12,R*.05*SP.eyeS,R*.05*SP.eyeS,EYE);ell(R*.1,R*.12,R*.05*SP.eyeS,R*.05*SP.eyeS,EYE);g.restore()}
+const KEYS={bird:"펙코루 (탁조룡)",gale:"시르페스 (풍조룡)",firebird:"파이로스 (염조룡)",inferno:"인페르나 (극염조)",lf_thunder:"페르치온 (뇌조 두목)",fbird:"피르코 (화린조)"};
+const SK={};
+/* 게임 공격 → 골격 패턴(자세) 대응 · [패턴, 공격 동작 예상 길이(초)] */
+const MAP={peck:["peck",.42],swipe:["gust",.2],charge:["dive",.8],tornado:["wbl",0],fireball:["elemshot",0],fireball3:["elemshot",0],fireball_ring:["elemshot",0],breath:["elemshot",.55],breath_sweep:["elemshot",.9],
+ meteor:["slam",0],lightning:["discharge",0],lightning_line:["discharge",0],lightning_ring:["discharge",0],roar:["roar",.5],tailspin:["tail",.32],leap:["leap",.4],roll:["roll",.7],slam:["slam",.25],discharge:["discharge",.5],stab:["stab",.42]};
+function walkT(m){return ((m._wp||0)/(Math.PI*2)*1.2)%1.2}
+function draw(m,c,r,ctx){
+  const d=m.d,key=KEYS[d.k];if(!key)return false;
+  g=c;SP=SPECIES[key];SKEL=SK[key]||(SK[key]=mkSkel(SP));broken={head:!!m.hb,tail:!!m.tb,body:!!m.xb};
+  const R=r*.8,p=basePose(),st=m.state||"chase",tele=st==="tele",anim=m.anim||0;let moving=false;
+  if(m._px!==undefined){const dd=Math.hypot(m.x-m._px,m.y-m._py);moving=dd>.35&&dd<200;m._wp=(m._wp||0)+dd/(R*.55)*(dd<200?1:0)}m._px=m.x;m._py=m.y;
+  const atk=(st==="tele"||st==="act"||st==="recover")&&MAP[m.atk];let hasAtk=false;
+  if(atk){const A=ANIMS[atk[0]],aEst=atk[1];let t;
+    if(st==="tele"){t=clamp(1-(m.t||0)/(m.t0||1),0,1)*A.tele}
+    else{const rt0=m.rt0||.8,post=st==="act"?(m.at||0):aEst+(rt0-(m.t||0)),tot=Math.max(.2,aEst+rt0);t=A.tele+clamp(post/tot,0,1)*(A.dur-A.tele)}
+    A.pose.call(A,p,t);hasAtk=true;if(m.atk==="charge"){p.ox=0}}
+  else if(st==="dead"||st==="sleep"||st==="stagger"){const A=ANIMS.relax;A.pose.call(A,p,anim%A.dur);if(st==="stagger"){p.head=.45;p.neck=[.25,.2,.1];p.spreadR=p.spreadL=.2}if(st==="dead"){p.head=.6;p.neck=[.3,.25,.15]}}
+  else if(moving){const A=ANIMS.walk;A.pose.call(A,p,walkT(m)/(SP.mv.tempo||1)*(SP.mv.tempo||1))}
+  else{const A=m.passive||m.calm?ANIMS.relax:ANIMS.idle;A.pose.call(A,p,(anim*(SP.mv.tempo||1))%A.dur)}
+  EYE=tele?"#ff3b2f":"#111";
+  const J=solve(p,R);
+  g.save();g.translate(p.ox*R,p.oy*R);g.rotate(p.rot);const sc=1+p.lift*.5;g.scale(sc,sc);
+  drawBird(p,J,R,d.c,[]);
+  if(p.charge>0){const q=J.beakTip,col=d.el&&ctx&&ctx.ELC?ctx.ELC[d.el]:d.c[2],rr=R*(.08+.25*p.charge)*SP.shotS,gr=g.createRadialGradient(q.x,q.y,0,q.x,q.y,rr);gr.addColorStop(0,"#fff");gr.addColorStop(.4,col);gr.addColorStop(1,"rgba(0,0,0,0)");g.fillStyle=gr;g.beginPath();g.arc(q.x,q.y,rr,0,7);g.fill()}
+  g.restore();return true}
+/* 현재 게임은 골격 개편 전 조룡종 그림을 사용 (연구소 골격은 다음 상위 단계부터 적용). 다시 켜려면 RIG_ON=true */
+const RIG_ON=false;
+return{draw,has:k=>RIG_ON&&!!KEYS[k]}})();
 function drawMonster(m,c){
   c=c||g;const d=m.d,r=m.r,[body,dark,acc]=d.c,dead=m.state==="dead",e=(x,y,rx,ry,col)=>ellC(c,x,y,rx,ry,col);
   c.save();c.translate(m.x,m.y);
@@ -3627,6 +3857,10 @@ function drawMonster(m,c){
     c.lineWidth=3;c.strokeStyle=dark;c.beginPath();c.ellipse(0,0,r*.95,r*1.1,0,0,7);c.stroke();
     if(!m.hb){c.fillStyle=acc;for(let i=0;i<5;i++){const a=-1.2+i*.6;c.beginPath();c.moveTo(Math.cos(a)*r*.15-r*.2,Math.sin(a)*r*.2);c.lineTo(Math.cos(a)*r*.75-r*.2,Math.sin(a)*r*.85);c.lineTo(Math.cos(a+.25)*r*.2-r*.2,Math.sin(a+.25)*r*.25);c.fill()}}
     [-1,1].forEach(sd=>{c.strokeStyle=dark;c.lineWidth=3;c.beginPath();c.moveTo(r*.8,sd*r*.2);c.lineTo(r*1.05,sd*r*.28);c.stroke();e(r*1.08,sd*r*.29,r*.08,r*.08,tele?"#ff3b2f":acc)});
+  }else if(sh==="bird"&&RIG.has(d.k)){
+    c.shadowBlur=0;{const mo=morph(d);c.scale(1/mo.sx,1/mo.sy)}
+    if(m.enr&&!dead){c.save();c.globalAlpha=.22+Math.sin(m.anim*6)*.08;ellC(c,0,0,r*1.7,r*1.2,acc);c.restore()}
+    RIG.draw(m,c,r,{ELC:typeof ELC!=="undefined"?ELC:null});
   }else if(sh==="bird"){
     c.strokeStyle=dark;c.lineWidth=r*.1;c.lineCap="round";
     [-1,1].forEach(sd=>{const st=Math.sin(m.anim*12+sd)*r*.15;c.beginPath();c.moveTo(-r*.1,sd*r*.3);c.lineTo(-r*.1+st,sd*r*.78);c.stroke()});

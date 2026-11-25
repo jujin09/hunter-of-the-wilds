@@ -4766,6 +4766,8 @@ function labTry(d){const li=labInfo(M);if(!li)return null;const{I,key}=li;I.set(
  const st=I.sl().filter(k=>I.A[k]);M.stepRun=M.stepRun||0;
  if(st.length&&M.stepRun<2&&Math.random()<(M.stepRun?.35:.22)){M.stepRun++;M.lch=null;mStart("lab",{lk:pick(st),ltm:1});return true}
  let c=labCands(I,null,d);if(!c.length)c=I.rl().filter(k=>I.A[k]&&I.A[k].tg&&!I.A[k].step&&I.ok(k)&&I.ir(k,d));
+ /* 실제 사거리 확인: 제자리 패턴(할퀴기·휘두르기 등)은 헌터가 예고 범위 안에 있을 때만 · 아무것도 안 닿으면 더 다가감 */
+ if(c.length){const u=labU(M),dc=dist(P,M),cr=c.filter(k=>{try{const me=labMeta(li.L,I,key,k);if(me.smp||I.A[k].noReach===undefined&&I.lg&&I.lg.reachK&&I.lg.reachK(k)>1.05)return true;return dc<=me.far*u*.92+PR}catch(e){return true}});if(cr.length)c=cr;else return false}
  if(!c.length)return false;
  const k=pick(c),s=I.ps(k);M.stepRun=0;M.lch={sum:s,cnt:1,last:s,used:[k],keys:[k]};
  

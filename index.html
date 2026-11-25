@@ -3218,6 +3218,8 @@ const ULKQ_L=[
  {id:"fast",t:"수행자의 길",ks:["nermu"],kind:"meal",r:"fast",rn:"수행자의 맑은 죽",d:"네르무를 토벌하고 수행자의 비법 죽을 배워요."},
  {id:"glass",t:"유리칼의 요리사",ks:["kuon"],kind:"meal",r:"glass",rn:"유리칼 회 정식",d:"쿠온-토우조의 검만큼 날카로운 칼솜씨를 증명하세요."},
  {id:"vein",t:"지맥의 열매",ks:["oreig","kiim"],kind:"meal",r:"vein",rn:"지맥 열매 파이",d:"오레이그와 키이므슈를 함께 쓰러뜨려 지맥 열매를 손에 넣어요."}];
+/* 상위(연구소 그림) 크기 보정: 하위 개체와 화면 크기가 비슷하게 · 공격 범위도 같은 비율 */
+const LABSZ={"boar_h":1.16,"crab_h":1.78,"wyvern_h":1.38,"venom_h":1.37,"wolf_h":1.32,"ape_h":1.66,"black_h":1.03,"magma_h":1.39,"thunderape_h":1.56,"elder_h":1.17,"spider_h":1.52,"mudboar_h":1.37,"vspider_h":1.35,"icecrab_h":1.75,"bloodape_h":1.49,"toad_h":1.54,"beetle_h":1.88,"brute_h":1.44,"toad2_h":1.39,"beetle2_h":1.89,"brute2_h":1.56,"toad3_h":1.43,"beetle3_h":1.42,"brute3_h":1.52,"quad2_h":1.09,"beetle4_h":1.45,"golem2_h":1.5,"mole2_h":1.4,"mount_h":1.62,"colossus_h":1.49,"gargan_h":1.32,"scorp_h":1.16,"raptor_h":1.18,"steed_h":1.51,"hydra_h":1.07,"thbeetle_h":1.79,"wtoad_h":1.54,"fbird_h":1.1,"morkan":1.34,"irsi":1.21,"berga":1.79,"katura":1.56,"oreig":1.08,"brondak":1.21,"sefil":1.34,"kuon":1.18,"izu":1.56};for(const d of MONS)if(LABSZ[d.k])d.labS=(d.labS||1)*LABSZ[d.k];
 const ULK_LOOK={},ULK_MEAL={};ULKQ_L.forEach(q=>{(q.kind==="look"?ULK_LOOK:ULK_MEAL)[q.r]=q});
 const ulkHas=q=>!!(q&&S.ulk&&S.ulk[q.id]);
 const lookOk=(k,v)=>{if(k==="cape"&&v&&String(v).startsWith("m:"))return rcapeOk(v.slice(2));if(k==="cape"&&v==="arena")return arCount("S")>=4;const q=k==="acc"?ULK_LOOK[v]:k==="cape"&&v?ULK_LOOK.cape:null;return!q||ulkHas(q)};
